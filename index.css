@@ -1,0 +1,36 @@
+button{
+	background-color: #afc975;
+
+	font-size: 20px;
+	font-family: cursive, 'Calibri'  ;
+	width: 250px;
+	margin: 2px;
+
+	text-align: center;
+	position: relative;
+	min-height: 35px;
+
+}
+input{
+	background-color:#97ad66;
+	font-family: auto  ,'Calibri';
+    font-size: large ;
+    color: brown;
+    margin: 2px;
+    width: 170spx;
+    min-height: 35px;
+}
+
+body{
+	background-color: #e6a8a8;
+	display: grid;
+}
+
+div{
+	float: left;
+	border-style: groove;
+}
+check{
+	margin-left: auto;
+	margin-right: auto;
+}

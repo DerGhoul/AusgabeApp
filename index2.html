@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Ausgabenrechner</title>
+<link type="text/css" rel="stylesheet" href="index.css" />
+<script src="index2.js"></script>
+</head>
+<body id="body">
+<script>
+var framewidth = document.getElementById("body").clientwidth;
+console.log(framewidth);
+</script>
+
+<h2 id="header">Das ist ein Ausgabenrechner</h2>
+
+
+
+<div>
+<label>Lohn</label><br>
+<input type="number" name="lohn" 		id="lohn" 		value=""
+		onchange="umverteilung()" >
+</div>
+
+<br>
+<div>
+<div>
+<label>Notwendigkeiten</label><br>
+
+<input type="number" name="notw" 		id="notw" 		value=""><br>
+<input type="checkbox" class="check"	id="isNotwendigkeitSelected" 	name ="notwendig" 	value="notwendig"
+			onclick="selectchanger(this.id)" >
+</div>
+
+
+<div>
+<label>Bildung</label><br>
+<input type="number" name="bildung" 	id="bildung" 	value=""><br>
+<input type="checkbox" class="check"	id="isBildungSelected" 			name ="bildung" 	value="bildung"
+		onclick="selectchanger(this.id)" >
+</div>
+
+
+<div>
+<label>Spass</label><br>
+<input type="number" name="spass" 		id="spass" 		value=""><br>
+<input type="checkbox" class="check"	id="isSpassSelected" 			name ="spass" 		value="spass"
+			onclick="selectchanger(this.id)" >
+</div>
+
+
+<div>
+<label>Sparen/Greifbar</label><br>
+<input type="number" name="sparen" 		id="spar" 		value=""><br>
+<input type="checkbox" class="check"	id="isSparenSelected" 			name ="sparen" 		value="sparen"
+			onclick="selectchanger(this.id)" >
+</div>
+
+
+<div>
+<label>Ruecklagen</label><br>
+<input type="number" name="rueckl" 		id="rueck" 		value=""><br>
+<input type="checkbox" class="check"	id="isRuecklagenSelected" 		name ="ruecklagen" 	value="ruecklagen"
+			onclick="selectchanger(this.id)" >
+</div>
+
+
+<div>
+<label>Investment</label><br>
+<input type="number" name="invest"	 	id="invest" 	value=""><br>
+<input type="checkbox" class="check"	id="isInvestmentSelected" 		name ="investment" 	value="investment"
+			onclick="selectchanger(this.id)" >
+</div>
+</div>
+
+
+
+<input type="text" 		name="Grund" 		id="grund" 			placeholder="Grund" >
+<input type="text" 		name="Beschreibung" id="beschreibung" 	placeholder="Beschreibung" >
+<input type="date" 		name="Datum" 		id="date" 			 >
+<script>
+var dateTime = new Date();
+var day = dateTime.getDate();
+var month = dateTime.getMonth()+1;
+if (month.length == 1) {
+	month = ("0"+month);
+}
+var year = dateTime.getFullYear();
+var value = (year+"-"+month+"-"+day);
+document.getElementById("date").value = value;
+</script>
+
+
+<input type="number" 	name="Preis" 		id="preis" 			placeholder="00,00" >
+<input type="file" 		name="Rechnung" 	id="rechnung" 		value="" >
+<button onclick="book()" >Verbuchen</button><br>
+<button onclick="" >Verbuchen</button><br>
+<br><br><br><br>
+<p><a href="index.html" >Hier gehts zur ersten Seite</a></p>
+
+
+</body>
+</html>

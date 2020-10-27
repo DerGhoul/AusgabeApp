@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Übungsrechner</title>
+<link type="text/css" rel="stylesheet" href="index.css" />
+<script src="index.js"></script>
+</head>
+<body>
+
+<h2 id="header">Das ist ein Taschenrechner</h2>
+
+<input type="text" name="input" id="input" value="4">
+<input type="text" name="output" id="output" value="12" >
+<input type="text" name="ergebnis" id="ergebnis" value="3">
+<button onclick="uebertrag()">Uebertragen</button><br>
+
+<!--button onclick="help()">Pythagoras</button>
+<button onclick="potenz()">potenz</button>
+<button onclick="writetime()">Writing</button-->
+
+<button onclick="addieren()" onmouseover="redder()" onmouseleave="redder()" >Addieren "+"</button><br>
+<button onclick="subtrahieren()" onmouseover="redder()" onmouseleave="redder()" >Subtrahieren "-"</button><br>
+<button onclick="dividieren()" onmouseover="redder()" onmouseleave="redder()"  >Dividieren "/"</button><br>
+<button onclick="multiplizieren()" onmouseover="redder()" >Multiplizieren "*"</button><br>
+<button onclick="modulo()" onmouseover="redder()" onmouseleave="redder()" >Modulo "%"</button><br>
+<button onclick="potenz()" onmouseover="redder()" onmouseleave="redder()" >Potenz "^"</button><br>
+<button onclick="pythagoras()" onmouseover="redder()" onmouseleave="redder()" >Pythagoras "Dreieck"</button><br>
+<button onclick="mitternacht()" onmouseover="redder()" onmouseleave="redder()" >Mitternachtsformel "ax²+bx+c"</button><br>
+
+
+
+<input type="text" name="mitternacht1" id="mf1" value="(b-|b²-4ac|)/2a" >
+<input type="text" name="mitternacht2" id="mf2" value="(b+|b²-4ac|)/2a" >
+
+<br><br><br><br>
+<p><a href="index2.html" >Hier gehts zur nächsten Seite</a></p>
+
+
+</body>
+</html>
