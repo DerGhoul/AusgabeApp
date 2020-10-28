@@ -1,5 +1,5 @@
 button{
-	background-color: #afc975;
+	background-color: #b2bdcf;
 
 	font-size: 20px;
 	font-family: cursive, 'Calibri'  ;
@@ -13,24 +13,87 @@ button{
 }
 input{
 	background-color:#97ad66;
-	font-family: auto  ,'Calibri';
+	font-family: Calibri, auto;
     font-size: large ;
-    color: brown;
-    margin: 2px;
-    width: 170spx;
+    color: #2d753f;
+    float: left;
+    width: 170px;
+	max-width: 200px;
     min-height: 35px;
+	
+}
+.parameter{
+	border-style: double;
 }
 
 body{
-	background-color: #e6a8a8;
+	background-color: #d0d3d9;
 	display: grid;
 }
+
 
 div{
 	float: left;
 	border-style: groove;
+	background-color: #acb4c2;
+	min-width: 40px;
+	max-width: 180px;
 }
+
+.divb{
+	float: left;
+	border-style: groove;
+	background-color: #acb4c2;
+	min-width: 40px;
+	max-width: 190px;
+}
+
+.diva{
+	float: left;
+	border-style: groove;
+	background-color: #acb4c2;
+	min-width: 40px;
+	max-width: 1110px;
+}
+
 check{
 	margin-left: auto;
 	margin-right: auto;
 }
+
+label{
+	text-align: center;
+	font-family: Calibri, auto;
+	font-size: large;
+}
+
+p{
+	color: red;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
