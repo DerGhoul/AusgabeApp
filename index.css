@@ -21,6 +21,7 @@ input{
 	max-width: 200px;
     min-height: 35px;
 	
+	
 }
 .parameter{
 	border-style: double;
@@ -38,6 +39,7 @@ div{
 	background-color: #acb4c2;
 	min-width: 40px;
 	max-width: 180px;
+	justify-content: center;
 }
 
 .divb{
@@ -46,6 +48,7 @@ div{
 	background-color: #acb4c2;
 	min-width: 40px;
 	max-width: 190px;
+	justify-content: center;
 }
 
 .diva{
@@ -54,12 +57,9 @@ div{
 	background-color: #acb4c2;
 	min-width: 40px;
 	max-width: 1110px;
+	justify-content: center;
 }
 
-check{
-	margin-left: auto;
-	margin-right: auto;
-}
 
 label{
 	text-align: center;
@@ -72,13 +72,28 @@ p{
 }
 
 
+img{
+	
+	width: 20px;
+	height: 20px;
+	border: double;
+	float: right;
+	margin: auto;
+}
 
+.check{
+	float: left;
+	width: 40px;
+	
+}
 
-
-
-
-
-
+.divc{
+	border:none;
+	margin-left: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
 
 
 

@@ -27,59 +27,188 @@ console.log(framewidth);
 <div class="diva">
 	<div ><!--Hier wird die "Notwendig" implementiert-->
 		<label>Notwendigkeiten</label><br>
-
-		<input type="number" name="Notwendigkeiten"  class="GeldBerechner"		id="notw" 		value=""><br>
-		<input type="checkbox" class="check"	id="isNotwendigkeitSelected" 	name ="notwendig" 	value="Notwendigkeiten"
-				onclick="selectchanger(this.id,this)" >
+			<input 	type="number" 
+					name="Notwendigkeiten"  
+					class="GeldBerechner"	 
+					id="notw"   
+					readonly="readonly"		
+					value=""
+					ondrop="geldeinbringen(event,this)"
+					ondragover="allowDrop(event,this)"><br>
+					
+					
+		<div class="divc">
+			<input 	type="checkbox" 
+					class="check"	
+					id="isNotwendigkeitSelected" 	
+					name ="notwendig" 	
+					value="Notwendigkeiten"
+					onclick="selectchanger(this.id,this)">
+			</input>
+			<img 	id="geld1"
+					src="geldschein.png"  
+					draggable="true"
+					ondragstart="gelduebertragen(event,this)" ></img>
+		</div>
 	</div>
 
 
 	<div ><!--Hier wird die "Bildung" implementiert-->
 		<label>Bildung</label><br>
-		<input type="number" name="Bildung" 	  class="GeldBerechner"		id="bildung" 	value=""><br>
-		<input type="checkbox" class="check"	id="isBildungSelected" 			name ="bildung" 	value="Bildung"
-			onclick="selectchanger(this.id,this)" >
+			<input 	type="number" 
+					name="Bildung" 	  
+					class="GeldBerechner"	   
+					readonly="readonly"		 
+					ondrag="gelduebertragen()" 
+					ondrop="geldeinbringen()" 			
+					id="bildung" 	
+					value=""
+					ondrop="geldeinbringen(event,this)"
+					ondragover="allowDrop(event,this)"><br>
+					
+					
+		<div class="divc">
+			<input 	type="checkbox" 
+					class="check"	
+					id="isNotwendigkeitSelected" 	
+					name ="notwendig" 	
+					value="Notwendigkeiten"
+					onclick="selectchanger(this.id,this)">
+			</input>
+			<img 	id="geld2"
+					src="geldschein.png"  
+					draggable="true"
+					ondragstart="gelduebertragen(event,this)" ></img>
+		</div>
 	</div>
 
 
 	<div ><!--Hier wird die "Spass" implementiert-->
 		<label>Spass</label><br>
-		<input type="number" name="Spass" 	  class="GeldBerechner"			id="spass" 		value=""><br>
-		<input type="checkbox" class="check"	id="isSpassSelected" 			name ="spass" 		value="Spass"
-				onclick="selectchanger(this.id,this)" >
+			<input 	type="number" 
+					name="Spass" 	  
+					class="GeldBerechner"	   
+					readonly="readonly"			 
+					ondrag="gelduebertragen()" 
+					ondrop="geldeinbringen()" 			
+					id="spass" 		
+					value=""
+					ondrop="geldeinbringen(event,this)"
+					ondragover="allowDrop(event,this)"><br>
+					
+					
+		<div class="divc">
+			<input 	type="checkbox" 
+					class="check"	
+					id="isNotwendigkeitSelected" 	
+					name ="notwendig" 	
+					value="Notwendigkeiten"
+					onclick="selectchanger(this.id,this)">
+			</input>
+			<img 	id="geld3"
+					src="geldschein.png"  
+					draggable="true"
+					ondragstart="gelduebertragen(event,this)" ></img></div>
 	</div>
 
 
 	<div ><!--Hier wird die "Sparen" implementiert-->
 		<label>Sparen</label><br>
-		<input type="number" name="Sparen"   class="GeldBerechner"				id="spar" 		value=""><br>
-		<input type="checkbox" class="check"	id="isSparenSelected" 			name ="sparen" 		value="Sparen"
-				onclick="selectchanger(this.id,this)" >
+			<input type="number" 
+					name="Sparen"   
+					class="GeldBerechner"		   
+					readonly="readonly"				
+					id="spar" 	 
+					ondrag="gelduebertragen()" 
+					ondrop="geldeinbringen()" 			
+					value=""
+					ondrop="geldeinbringen(event,this)"
+					ondragover="allowDrop(event,this)"><br>
+					
+					
+		<div class="divc">
+			<input 	type="checkbox" 
+					class="check"	
+					id="isNotwendigkeitSelected" 	
+					name ="notwendig" 	
+					value="Notwendigkeiten"
+					onclick="selectchanger(this.id,this)">
+			</input>
+			<img 	id="geld4"
+					src="geldschein.png"  
+					draggable="true"
+					ondragstart="gelduebertragen(event,this)" ></img>
+		</div>
 	</div>
 
 
 	<div ><!--Hier wird die "Ruecklagen" implementiert-->
 		<label>Ruecklagen</label><br>
-		<input type="number" name="Ruecklagen" 	  class="GeldBerechner"			id="rueck" 		value=""><br>
-		<input type="checkbox" class="check"	id="isRuecklagenSelected" 		name ="ruecklagen" 	value="Ruecklagen"
-				onclick="selectchanger(this.id,this)" >
+			<input 	type="number" 
+					name="Ruecklagen" 	  
+					class="GeldBerechner"		   
+					readonly="readonly"			 
+					ondrag="gelduebertragen()" 
+					ondrop="geldeinbringen()" 		
+					id="rueck" 		
+					value=""
+					ondrop="geldeinbringen(event,this)"
+					ondragover="allowDrop(event,this)"><br>
+					
+					
+		<div class="divc">
+			<input 	type="checkbox" 
+					class="check"	
+					id="isNotwendigkeitSelected" 	
+					name ="notwendig" 	
+					value="Notwendigkeiten"
+					onclick="selectchanger(this.id,this)">
+			</input>
+			<img 	id="geld5"
+					src="geldschein.png"  
+					draggable="true"
+					ondragstart="gelduebertragen(event,this)" ></img>
+		</div>
 	</div>
 
 
 	<div ><!--Hier wird die "Investment" implementiert-->
 		<label>Investment</label><br>
-		<input type="number" name="Investment"	   class="GeldBerechner"			id="invest" 	value=""><br>
-		<input type="checkbox" class="check"	id="isInvestmentSelected" 		name ="investment" 	value="Investment"
-				onclick="selectchanger(this.id,this)" >
+			<input 	type="number" 
+					name="Investment"	   
+					class="GeldBerechner"		   
+					readonly="readonly"			 
+					ondrag="gelduebertragen()" 
+					ondrop="geldeinbringen()" 		
+					id="invest" 	
+					value=""
+					ondrop="geldeinbringen(event,this)"
+					ondragover="allowDrop(event,this)"><br>
+		
+		
+		<div class="divc">
+			<input 	type="checkbox" 
+					class="check"	
+					id="isNotwendigkeitSelected" 	
+					name ="notwendig" 	
+					value="Notwendigkeiten"
+					onclick="selectchanger(this.id,this)">
+			</input>
+			<img 	id="geld6"
+					src="geldschein.png"  
+					draggable="true"
+					ondragstart="gelduebertragen(event,this)" ></img>
+		</div>
 	</div>
-</div>
+</div><br>
 
-<br>
 
-<div class="divb" >
+
+
+<div class="divb" ><!--Hier werden die Dateiparameter erfasst-->
 
 	<div> <!--Hier werden die Dateiparameter erfasst-->
-<input type="text" 		class="parameter"	name="Grund" 		id="grund" 			placeholder="Grund" >
+<input type="text" 		class="parameter"	name="Grund" 		id="grund" 			placeholder="Grund" readonly="readonly" >
 <input type="text" 		class="parameter"	name="Beschreibung" id="beschreibung" 	placeholder="Beschreibung" >
 <input type="date" 		class="parameter"	name="Datum" 		id="date" 			 >
 
@@ -104,15 +233,25 @@ document.getElementById("date").value = value;
 
 </div>
 
-<p class="warning" id="hierfehltwas" ></p>
-<br>
+
+
+
+
+<p class="warning" id="hierfehltwas" ></p><br>
+
+
+
+
+
+
 
 <div><!--Implamentiert das Datei load feld-->
 <input type="file" 		class="parameter"	name="Rechnung" 	id="rechnung" 		value="" 
 		accept=".pdf,.png,.jpg,.jpeg">
-</div>
+</div><br>
 
-<br>
+
+
 
 <button onclick="book()" >Verbuchen</button><br>
 

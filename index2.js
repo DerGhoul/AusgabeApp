@@ -68,6 +68,10 @@ function disselect(){
 	for(var i = 0;i<check.length;i++){
 	check[i].checked = false;
 	}
+	document.getElementById("beschreibung").value = "";
+	document.getElementById("preis").value = "";
+	
+	
 }
 
 
@@ -104,6 +108,7 @@ function book(){
 		console.log("BaFb");
 	}else{
 		console.log(grund+";"+beschreibung+";"+datum+";"+preis);
+		document.getElementById("hierfehltwas").innerHTML = "";
 		disselect();
 	}
 	
@@ -148,7 +153,23 @@ function umverteilung(){
 }
 
 
+function gelduebertragen(ev ,sender){
+	ev.dataTransfer.setData("",sender.id);
+}
 
+function geldeinbringen(ev,sender){
+	var betragstring = prompt("Bitte höhe des Betrags angeben");
+	var betrag = parseFloat(betragstring);
+	var senderID = document.getElementById(sender.id);
+	senderID.value = betrag;
+	console.log(sender.id);
+	console.log(betrag);
+}
+
+function allowDrop(ev,sender){
+	ev.preventDefault();
+	
+}
 
 
 
