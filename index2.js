@@ -1,11 +1,20 @@
-function selectchanger(senderID, sender){
+//Globale Variablen
+var geldId ="";
+
+
+
+//Methoden
+
+function selectchanger(sender){
+	
 	var check = document.getElementsByClassName("check");
-	var sendedId = senderID;
-	var sendervalue = sender.value;
-
+	var senderId = sender.id;
+	var senderValue = sender.value;
+	//console.log(senderId);
+	//console.log(senderValue);
 	for(var i = 0;i<check.length;i++){
-
-		if(check[i].id == sendedId){
+		//console.log(check[i].id);
+		if(check[i].id == senderId){
 			console.log(true);
 		}
 		else{
@@ -13,7 +22,7 @@ function selectchanger(senderID, sender){
 		}
 
 	}
-	toGrund(sendervalue);
+	toGrund(senderValue);
 
 }
 
@@ -28,7 +37,7 @@ function toGrund(sender){
 function verrechnen(value){
 	//console.log(value);
 	var grund = document.getElementById("grund").value;
-	var verteilung = document.getElementsByClassName("GeldBerechner");
+	var verteilung = document.getElementsByClassName("geldBerechner");
 	var check = document.getElementsByClassName("check");
 	
 	for(var i = 0;i<check.length;i++){
@@ -155,23 +164,141 @@ function umverteilung(){
 
 function gelduebertragen(ev ,sender){
 	ev.dataTransfer.setData("",sender.id);
+	//console.log(sender.id);
+	geldId = sender.id;
 }
+
 
 function geldeinbringen(ev,sender){
 	var betragstring = prompt("Bitte höhe des Betrags angeben");
-	var betrag = parseFloat(betragstring);
+	var betrag = betragstring;
 	var senderID = document.getElementById(sender.id);
-	senderID.value = betrag;
-	console.log(sender.id);
-	console.log(betrag);
+	var senderValue = sender.value;
+	var outputId = getOutputId(geldId);
+	var inputId = sender.id;
+	geldabziehen(inputId,outputId,betrag);
+	
+	
+	//senderID.value = betrag;	
+	//console.log(outputId);
+	//console.log(senderValue);
+	//console.log(sender.id);
+	//console.log(betrag);
+	//console.log(geldId);
 }
 
 function allowDrop(ev,sender){
 	ev.preventDefault();
+		
+}
+
+function geldabziehen(inputId,outputId,betragstring){
 	
+	
+	var input =  document.getElementById(inputId);
+	var output = document.getElementById(outputId);
+	var inputValue = parseFloat(input.value);
+	var outputValue = parseFloat(output.value);
+	var betrag = parseFloat(betragstring);
+	
+	inputValue  += betrag;
+	outputValue -= betrag;
+	
+	var a = zuBetrag(betragstring);
+	console.log(a);
+	
+	
+	//console.log(betrag);
+	//console.log(inputValue);
+	//console.log(outputValue);
+	
+	document.getElementById(inputId).value = inputValue.toFixed(2);
+	document.getElementById(outputId).value = outputValue.toFixed(2);
+	
+	
+	//console.log(input.value+";"+output.value+";"+betrag);
+	//dateiLeser();
+}
+
+/* dateiLeser
+function dateiLeser(){
+	const readline = require('readline');
+	const fs = require('fs');
+	
+	var file = 'C:/Users/Reinhard.Schneider/Documents/vartabtest.txt';
+	var rl = readline.createInterface({
+		input: fs.createReadStream(file),
+		output: process.stdout,
+		terminal: false
+	});
+	
+	rl.on('line', function (line){
+		console.log(line) // print the content of the line on each linebreak
+	});	
 }
 
 
+//C:/Users/Reinhard.Schneider/Documents/vartabtest.txt
+//*/
+
+
+
+function zuBetrag(betrag){
+	var betragstring = betrag.toString();
+	
+	try{
+		console.log(betragstring);
+		
+		var splitter = betragstring.split(',');
+		var firstsplit = splitter[0];
+		console.log(firstsplit);
+		console.log(secondsplit);
+		var secondsplit = splitter[1];
+		var newstring = (splitter[0]+"."+splitter[1]);
+		console.log(parseFloat(newstring));
+	}catch{}
+	var newstring = betragstring;
+	
+	return(newstring);
+}
+
+
+
+function getOutputId(geldId){
+	var outputId;
+	
+	
+	if(geldId == "notwendiggeld"){
+		outputId = "notw";
+	}
+	if(geldId == "bildunggeld"){
+		outputId = "bildung";
+	}
+	if(geldId == "spassgeld"){
+		outputId = "spass";
+	}
+	if(geldId == "sparengeld"){
+		outputId = "spar";
+	}
+	if(geldId == "ruecklagengeld"){
+		outputId = "rueck";
+	}
+	if(geldId == "investmentgeld"){
+		outputId = "invest";
+	}
+	
+	return(outputId);
+	
+		
+	
+	
+	//notwendiggeld
+	//bildunggeld
+	//spassgeld
+	//sparengeld
+	//ruecklagengeld
+	//investmentgeld
+}
 
 
 

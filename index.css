@@ -40,6 +40,8 @@ div{
 	min-width: 40px;
 	max-width: 180px;
 	justify-content: center;
+	/*margin-right: auto;
+	margin-left: auto;*/
 }
 
 .divb{
@@ -93,6 +95,8 @@ img{
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	margin-right: auto;
+	margin-left: auto;
 }
 
 
