@@ -133,6 +133,315 @@ var arrayname = [firstType:"string1/object1",...];
 
 array.length;						->Gibt die Anzahl an Elementen zurück
 
+Array.forEach():
+myArray.forEach(myFunction) 		->ruft für jedes Element die Funktion auf, 
+									->Funktion muss einen Eingabewert besitzen, dieser ist: item value, item index,array itself
+
+Array.push("newElement")			->fügt neues Element dem Array hinzu
+Array[Array.length] = "newElement"  ->fügt ebenfalls neues Element hinzu/sollte bei großen Listen nicht verwendet werden
+
+Arten ein Array zu erzeugen:
+var Array = new Array();			->Schlecht bei nur einer Zahl wird ein Array der Länge, entsprechend der Größe dieser Zahl zurückgegeben
+var Array = [];						->Gut
+
+
+Überprüfen ob es sich um ein Array handelt
+Array.isArray();											->Ansatz1
+function isArray(x) {										->Ansatz2
+  return x.constructor.toString().indexOf("Array") > -1;}
+var myArray = [element1,...];								->Ansatz3
+myArray instanceof Array;			
+
+
+Array.toString();					->Convertiert einen Array in eine Zeichenkette, die die Werte durch Komma getrennt zurückgibt
+Array.toString("*");				->Gleich zur toString() Methode, der Seperator kann selbst bestimmt werden
+
+Array.pop();						->entfernt das letzte Element eines Arrays
+var x = Array.pop();				->gibt den index des Elements zurück, das entfernt wurde
+Array.push();						->fügt neues Element hinten an
+var x = Array.push();				->Gib den index des eingefügten Elements zurück
+Array.shift();						->entfernt erstes Element aus dem Array
+var x = Array.shift();				->gib den Wert des entfernten Elements zurück
+Array.unshift();					->fügt neues Element am Anfang ein
+var x = Array.unshift();			->gibt die neue Länge des Arrays an
+
+
+Element eines Arrays ändern:
+Array[index] = newElement;			->Ändert den Wert des Elements an er Stelle des angegebenen indexes mit dem neuen Element
+
+Element eines Arrays löschen:
+delete Array[index];				->Entfernt das Element an der Stelle und wandelt es in undefinded um
+
+Array.splice("Position","Menge","element1","element2",...)->Erste Stele gibt die Position an an der Element eingefügt werden sollen/
+															Zweite Stelle gibt die Anzahl an Elemente wieder die gelöscht werden sollen/
+															Alle weiteren Stellen geben die Elemente an die eingefügt werden sollen
+
+Array.splice("Position","Menge");	->Entfernt die Menge an Elementen an der Postition ohne Lücken															
+
+newArray = Array1.concat(Array2,..);->Fügt zwei oder mehr Arrays zusammen
+newArray = Array1.concat("String1");->Fügt Element String1 dem Element hinzu
+
+var newArray = Array.slice(index);	->Kopiert alle Elemente ab der Stelle index in ein neues Array
+var newArray = Array.slice(index1,index2);->kopiert alle Elemente von Stelle index1 bis (nicht eingeschlossen)index2 in ein neues Array
+
+
+
+----------------------------------------Array-Sortierung--------------------------------------------
+
+Array.sort();						->Sortiert die Elemente im Array alphabetisch
+Array.reverse();					->kehr die Reihenfolge des Arrays um
+
+Array.sort(function(a, b){return a - b}); ->Sortierung von Zahlen mit der Compare function
+Array.sort(function(a, b){return b - a}); ->Absteigende Sortierung von Zahlen mit der Compare function
+
+Compare-Funktion:
+function(a,b){return a - b}			->Das Ergebnis ist entweder negativ,null oder positiv
+									->Wenn das Ergebnis negativ ist a wird vor b einsortiert
+									->Wenn das Ergebnis positiv ist b wird vor a einsortiert
+									->Wenn das Ergebnis null ist wird nichts geändert
+
+Zufällige Reihenfolge:
+Array.sort(function(a,b){return 0.5 - Math.random()}); ->Gibt zufällige Reihenfolg zurück
+
+
+Kleinster und Größter Wert eines Arrays:
+Array.sort(function(a,b){return a - b});
+x = Array[0];						->kleinster Wert
+x = Array[Array.length-1]			->größter Wert
+function myArrayMin(arr) {			->kleinster Wert
+  return Math.min.apply(null, arr);
+}
+function myArrayMax(arr) {			->größter Wert
+  return Math.max.apply(null, arr);
+}
+function myArrayMin(arr) {			->kleinster Wert
+  var len = arr.length;
+  var min = Infinity;
+  while (len--) {
+    if (arr[len] < min) {
+      min = arr[len];
+    }
+  }
+  return min;
+}
+function myArrayMax(arr) {			->größter Wert
+  var len = arr.length;
+  var max = -Infinity;
+  while (len--) {
+    if (arr[len] > max) {
+      max = arr[len];
+    }
+  }
+  return max;
+}
+
+Sortieren von Arrays mit Objekten:
+Array.sort(function(a, b){return a.year - b.year});
+
+Array.sort(function(a, b){
+  var x = a.type.toLowerCase();
+  var y = b.type.toLowerCase();
+  if (x < y) {return -1;}
+  if (x > y) {return 1;}
+  return 0;
+});
+
+
+
+----------------------------------------Array-Iteration--------------------------------------------
+
+
+var newArray = Array.map(myFunction); 			->durchläuft die Methode mit und für jedes Element und speichert dies in neues Array Funktion(value,index,itself)
+var newArray = Array.filter(myFunction);		->durchläuft/testet die Methode mit jedem Element gibt nur Elemente zurück die Test bestehen Funktion(value,index,itself)
+var variable = Array.reduce(myFunction);		->reduziert die Methode auf einen Wert Funktion(value,index,itself,total) total = der initiierungswert oder vorher zurückgegebene Wert
+var variable = Array.reduceRight(myFunction);	->gleich zu reduce() fängt aber rechts an
+var newArray = Array.every(myFunction);			->schaut ob alle Elemente einen Test bestehen Funktion(value",index,itself")
+var newArray = Array.some(myFunction);			->schaut ob wenigstens ein Element den Test besteht Funktion(value,index,itself)
+var x = Array.find(myFunction);					->Gibt den Wert des ersten Elements zurück, dass den Test besteht Funktion(value,index,itself)
+
+
+var x = Array.indexOf("Element");	Fehler: -1	->Sucht eine Element im Array und gibt den Index zurück
+var x = Array.indexOf("Element",start); ""		->Sucht ein Element ab einer bestimmten Position und gibt index zurück
+var x = Array.lastIndexOf("Element");	""		->Gibt letzten treffer zurück
+var x = Array.lastIndexOf("Element",start); ""	->Gibt letzten treffer zurück angefangen von hinten gezählt an startposition
+
+
+
+
+----------------------------------------Datums Objekte--------------------------------------------
+
+var d = new Date();
+
+new Date()
+new Date(year, month, day, hours, minutes, seconds, milliseconds)
+new Date(milliseconds)
+new Date(date string)
+
+7 Zahlen spezifizieren: Jahr, Monat, Tag, Stunde, Minute, Sekunde und Millisekunde (in dieser Reihenfolge)
+6 Zahlen spezifizieren: Jahr, Monat, Tag, Stunde, Minute, Sekunde
+5 Zahlen spezifizieren: Jahr, Monat, Tag, Stunde, Minute
+4 Zahlen spezifizieren: Jahr, Monat, Tag, Stunde
+3 Zahlen spezifizieren: Jahr, Monat, Tag
+2 Zahlen spezifizieren: Jahr, Monat
+1 Zahlen spezifizieren: Millisekunde
+
+Daten aus letztem Jahrhundert:
+new Date(99, 11, 24); 					->24.11.1999
+new Date(9, 11, 24);					->24.11.1909
+d.toISOString();						->2020-11-02T12:34:31.586Z
+
+d = new Date("2015-03-25");
+d = new Date("25 Mar 2015");			->Reihenfolge von Monat und Tag ist egal, wenn der Monat Ausgeschrieben/abgekürzt ist
+
+Date.parse();							->Gibt die Milisekunden seit 01.01.1970 zurück
+d.getTime();							->Gibt die Milisekunden seit 01.01.1970 zurück
+
+d.getFullYear();						->Gibt Jahr vierstellig zurück
+d.getMonth();							->Gibt Monat (0-11) zurück
+										->var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+										  document.getElementById("demo").innerHTML = months[d.getMonth()];
+d.getDate();							->Gibt Tag (1-31) zurück
+d.getHours();							->Gibt Stunde (0-23) zurück
+d.getMinutes();							->Gibt Minute (0-59) zurück
+d.getSeconds();							->Gibt Sekunde (0-59) zurück
+d.getDay();								->Gibt Wochentag (0-6) zurück
+										->var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+										  document.getElementById("demo").innerHTML = days[d.getDay()];
+									
+getUTCDate()			Same as getDate(), but returns the UTC date
+getUTCDay()				Same as getDay(), but returns the UTC day
+getUTCFullYear()		Same as getFullYear(), but returns the UTC year
+getUTCHours()			Same as getHours(), but returns the UTC hour
+getUTCMilliseconds()	Same as getMilliseconds(), but returns the UTC milliseconds
+getUTCMinutes()			Same as getMinutes(), but returns the UTC minutes
+getUTCMonth()			Same as getMonth(), but returns the UTC month
+getUTCSeconds()			Same as getSeconds(), but returns the UTC seconds
+
+
+setDate()				Set the day as a number (1-31)
+setFullYear()			Set the year (optionally month and day)
+setHours()				Set the hour (0-23)
+setMilliseconds()		Set the milliseconds (0-999)
+setMinutes()			Set the minutes (0-59)
+setMonth()				Set the month (0-11)
+setSeconds()			Set the seconds (0-59)
+setTime()				Set the time (milliseconds since January 1, 1970)
+
+
+----------------------------------------Math-Objekte--------------------------------------------
+
+Math.round(index)						->rundet zum nächstgelegenen Integer
+Math.pow(index1,index2)					->potenziert ersten Wert mit zweitem
+Math.sqrt(index)						->gibt Wurzel zurück
+Math.abs(x)								->gibt den Betrag zurück
+Math.ceil(x)							->gibt aufgerundeten nächsten Integer zurück
+Math.floor(x)							->gibt abgerundeten nächsten Integer zurück
+Math.sin(x)								->gibt den Sinus, der zwischen 1 und -1 zurück x ist gegeben in radiant x*(PI/180)
+Math.sin(x * Math.PI / 180)
+Math.cos(x)								->gibt den Cosinus zurück (-1 - 1)
+Math.cos(x * Math.PI/180);
+
+Math.min(number1,number2,number3,...)	->gibt kleinsten Wert zurück
+Math.max(number1,number2,number3,...)	->gibt größten Wert zurück
+Math.random();							->gibt zufällige zahl zurück zwischen 0(eingeschlossen) und 1(ausgenommen)
+
+Math.E        							-> returns Euler's number
+Math.PI       							-> returns PI
+Math.SQRT2    							-> returns the square root of 2
+Math.SQRT1_2  							-> returns the square root of 1/2
+Math.LN2      							-> returns the natural logarithm of 2
+Math.LN10     							-> returns the natural logarithm of 10
+Math.LOG2E    							-> returns base 2 logarithm of E
+Math.LOG10E   							-> returns base 10 logarithm of E
+
+abs(x)					Returns the absolute value of x
+acos(x)					Returns the arccosine of x, in radians
+acosh(x)				Returns the hyperbolic arccosine of x
+asin(x)					Returns the arcsine of x, in radians
+asinh(x)				Returns the hyperbolic arcsine of x
+atan(x)					Returns the arctangent of x as a numeric value between -PI/2 and PI/2 radians
+atan2(y, x)				Returns the arctangent of the quotient of its arguments
+atanh(x)				Returns the hyperbolic arctangent of x
+cbrt(x)					Returns the cubic root of x
+ceil(x)					Returns x, rounded upwards to the nearest integer
+cos(x)					Returns the cosine of x (x is in radians)
+cosh(x)					Returns the hyperbolic cosine of x
+exp(x)					Returns the value of Ex
+floor(x)				Returns x, rounded downwards to the nearest integer
+log(x)					Returns the natural logarithm (base E) of x
+max(x, y, z, ..., n)	Returns the number with the highest value
+min(x, y, z, ..., n)	Returns the number with the lowest value
+pow(x, y)				Returns the value of x to the power of y
+random()				Returns a random number between 0 and 1
+round(x)				Rounds x to the nearest integer
+sin(x)					Returns the sine of x (x is in radians)
+sinh(x)					Returns the hyperbolic sine of x
+sqrt(x)					Returns the square root of x
+tan(x)					Returns the tangent of an angle
+tanh(x)					Returns the hyperbolic tangent of a number
+trunc(x)				Returns the integer part of a number (x)
+
+
+
+
+
+----------------------------------------Random-Math--------------------------------------------
+
+Math.random								->zufällige Zahl zwischen 0 und 1(ausgeschlossen)
+Math.floor(Math.random() * 10)			->zufällige Zahl zwischen 0 und 9
+Math.floor(Math.random() * 11)			->zufällige Zahl zwischen 0 und 10
+Math.floor(Math.random() * 100)			->zufällige Zahl zwischen 0 und 99
+Math.floor(Math.random() * 101)			->zufällige Zahl zwischen 0 und 100
+Math.floor(Math.random() * 10) + 1		->zufällige Zahl zwischen 1 und 10
+Math.floor(Math.random() * 100) + 1 	->zufällige Zahl zwischen 1 und 100
+function getRndInteger(min, max) {		->zufällige Zahl zwischen min und max(ausgeschlossen)
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
+function getRndInteger(min, max) {		->zufällige Zahl zwischen min und max
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+
+
+
+
+----------------------------------------Boolean-Methoden--------------------------------------------
+
+
+==					equal to				if (day == "Monday")
+>					greater than			if (salary > 9000)
+<					less than				if (age < 18)
+
+
+Boolean(x);
+
+-Wenn x keinen Wert hat ist der Boolean Wert false (0,"",undefined,false,NaN)
+-Wenn x einen Wert hat ist der Boolean Wert true
+
+var x = new Boolean(false);				->Boolean kann ein Objekt sein
+
+
+----------------------------------------Vergleichs-Operatoren--------------------------------------------
+
+
+==		equal to							x == 8			false	
+											x == 5			true	
+											x == "5"		true	
+===		equal value and equal type			x === 5			true	
+											x === "5"		false	
+!=		not equal							x != 8			true	
+!==		not equal value or not equal type	x !== 5			false	
+											x !== "5"		true	
+											x !== 8			true	
+>		greater than						x > 8			false	
+<		less than							x < 8			true	
+>=		greater than or equal to			x >= 8			false	
+<=		less than or equal to				x <= 8			true
+
+
+&&		and					(x < 10 && y > 1) is true	
+||		or					(x == 5 || y == 5) is false	
+!		not					!(x == y) is true
 
 
 
@@ -140,21 +449,244 @@ array.length;						->Gibt die Anzahl an Elementen zurück
 
 
 
+----------------------------------------if - else if - else--------------------------------------------
+
+--->Syntax<---
+if (condition1) {
+  //  block of code to be executed if condition1 is true
+} else if (condition2) {
+  //  block of code to be executed if the condition1 is false and condition2 is true
+} else {
+  //  block of code to be executed if the condition1 is false and condition2 is false
+}
 
 
 
+----------------------------------------Switch-Methoden--------------------------------------------
+--->Syntax<---
+switch(expression) {
+  case x:
+    // code block
+    break;
+  case y:
+    // code block
+    break;
+  default:
+    // code block
+}
+
+So funktionierts:
+-Der Switch-Ausdruck wird einmal ausgewertet
+-Der Wert wird mit jedem Wert in jedem Fall verglichen
+-Wenn es einen Treffer gibt, wird der Code-Block ausgeführt
+-Wenn es keinen Treffer gibt, wird der Default Code-Block ausgeführt
+
+Der Default Code-Block muss nicht der letzte Block sein, er kann auch an anderer Position stehen
+
+--->Syntax2<---
+switch(expression) {
+  case x:
+  case y:
+    // code block
+    break;
+  case a:
+  case b:
+    // code block
+    break;
+  default:
+    // code block
+}
+
+----------------------------------------For-Schleifen--------------------------------------------
+For-Schleife
+--->Syntax<---
+for (statement 1; statement 2; statement 3) {
+  // code block to be executed
+}
+
+
+--->Beispiel<---
+for (i = 0; i < 5; i++) {
+  text += "Die Zahl ist" + i + "<br>";
+}
+
+
+----------------------------------------For/In-Schleife--------------------------------------------------------------------------------
+--->Syntax<---
+for (variable if iterable) {
+  // code block to be executed
+}
+
+
+--->Beispiel<---
+var person = {fname:"John", lname:"Doe", age:25};
+
+var text = "";
+var x;
+for (x in person) {
+  text += person[x];
+}
 
 
 
+----------------------------------------For/Of-Schleife--------------------------------------------------------------------------------
+--->Syntax<---
+for (variable of iterable) {
+  // code block to be executed
+}
+
+
+--->Beispiel<---
+var cars = ["BMW", "Volvo", "Mini"];
+var x;
+
+for (x of cars) {
+  document.write(x + "<br >");
+}
 
 
 
+----------------------------------------While-Schleife--------------------------------------------------------------------------------
+--->Syntax<---
+while (condition) {
+  // code block to be executed
+}
+
+
+--->Beispiel<---
+while (i < 10) {
+  text += "The number is " + i;
+  i++;
+}
 
 
 
+----------------------------------------Do-While-Schleife--------------------------------------------------------------------------------
+--->Syntax<---
+do {
+  // code block to be executed
+}
+while (condition);
+
+
+--->Beispiel<---
+do {
+  text += "The number is " + i;
+  i++;
+}
+while (i < 10);
 
 
 
+----------------------------------------Break and Continue--------------------------------------------
+
+break springt aus einer schleife heraus 		->Schleife endet
+continue überspringt ein Schleifendurchlauf		->Schleife endet nicht
+
+break labelname									->kann aus gesamtem Codeblock rausspringen
+
+----------------------------------------Typ-Convertierung--------------------------------------------
+In JavaScript gibt es 5 verschiedene Datentypen:
+string
+number
+boolean
+object
+function
+
+Es gibt 6 Typen von Objekten:
+Object
+Date
+Array
+String
+Number
+Boolean
+
+Und zwei Typen die keinen Wert annehmen können:
+null
+undefined
+
+
+Der Datentyp von NaN ist eine Zahl
+Der Datentyp von array ist ein Objekt
+Der Datentyp eines date ist ein Objekt
+Der Datentyp von null ist ein Objekt
+Der Datentyp von undefined variable ist undefined *
+Der Datentyp einer variable der noch kein Wert zugewiesen wurde ist undefined *
+
+toExponential()			Returns a string, with a number rounded and written using exponential notation.
+toFixed()				Returns a string, with a number rounded and written with a specified number of decimals.
+toPrecision()			Returns a string, with a number written with a specified length
+
+getDate()				Get the day as a number (1-31)
+getDay()				Get the weekday a number (0-6)
+getFullYear()			Get the four digit year (yyyy)
+getHours()				Get the hour (0-23)
+getMilliseconds()		Get the milliseconds (0-999)
+getMinutes()			Get the minutes (0-59)
+getMonth()				Get the month (0-11)
+getSeconds()			Get the seconds (0-59)
+getTime()				Get the time (milliseconds since January 1, 1970)
+
+Number("string");		Konvertiert einen String in eine Zahl, wenn dies nicht möglich ist, ist der Wert NAN
+Number(false)			->gibt 0 zurück
+Number(true)			->gibt 1 zurück
+
+parseFloat()	Parses a string and returns a floating point number
+parseInt()	Parses a string and returns an integer
+
+
+Original			Converted		Converted			Converted
+Value				to Number		to String			to Boolean
+false				0				"false"				false	
+true				1				"true"				true	
+0					0				"0"					false	
+1					1				"1"					true	
+"0"					0				"0"					true	
+"000"				0				"000"				true	
+"1"					1				"1"					true	
+NaN					NaN				"NaN"				false	
+Infinity			Infinity		"Infinity"			true	
+-Infinity			-Infinity		"-Infinity"			true	
+""					0				""					false	
+"20"				20				"20"				true	
+"twenty"			NaN				"twenty"			true	
+[ ]					0				""					true	
+[20]				20				"20"				true	
+[10,20]				NaN				"10,20"				true	
+["twenty"]			NaN				"twenty"			true	
+["ten","twenty"]	NaN				"ten,twenty"		true	
+function(){}		NaN				"function(){}"		true	
+{ }					NaN				"[object Object]"	true	
+null				0				"null"				false	
+undefined			NaN				"undefined"			false
+
+
+
+----------------------------------------Bitweise Operatoren--------------------------------------------
+
+Operator		Name					Description
+&				AND						Setzt jedes Bit auf 1, wenn beide 1 sind
+|				OR						Setzt jedes Bit auf 1, wenn eins von beiden 1 ist
+^				XOR						Setzt jedes Bit auf 1, wenn nur eins von beiden 1 ist
+~				NOT						Invertiert alle Bits 1->0 0->1
+<<				Zero fill left shift	Verschiebt sich nach links, indem Nullen von rechts hineingedrückt werden und die am weitesten links liegenden Bits abfallen
+>>				Signed right shift		Verschiebt sich nach rechts, indem Kopien des am weitesten links liegenden Bits von links hineingeschoben werden und die am weitesten rechts liegenden Bits abfallen
+>>>				Zero fill right shift	Verschiebt sich nach rechts, indem Nullen von links hineingedrückt werden, und lässt die Bits ganz rechts abfallen
+
+
+
+>>>>>>>Beispiele<<<<<
+Operation			Result		Same as				Result
+5 & 1				1			0101 & 0001	 		0001
+5 | 1				5			0101 | 0001	 		0101
+~ 5					10			~0101	 			1010
+5 << 1				10			0101 << 1	 		1010
+5 ^ 1				4			0101 ^ 0001	 		0100
+5 >> 1				2			0101 >> 1	 		0010
+5 >>> 1				2			0101 >>> 1	 		0010
+
+
+----------------------------------------String-Methoden--------------------------------------------
 ----------------------------------------String-Methoden--------------------------------------------
 ----------------------------------------String-Methoden--------------------------------------------
 ----------------------------------------String-Methoden--------------------------------------------
