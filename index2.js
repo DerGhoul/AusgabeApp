@@ -1,3 +1,28 @@
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+    }
+};
+xhttp.open("GET", "UserInterface.xml", true);
+xhttp.send();
+
+function myFunction(xml) {
+    var xmlDoc = xml.responseXML;
+    document.getElementById("demo").innerHTML =
+    xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+}
+
+
+
+
+
+
+
+
+
+
+
 //Globale Variablen
 var geldId ="";
 
@@ -6,7 +31,7 @@ var geldId ="";
 //Methoden
 
 function selectchanger(sender){
-	
+
 	var check = document.getElementsByClassName("check");
 	var senderId = sender.id;
 	var senderValue = sender.value;
@@ -30,7 +55,7 @@ function selectchanger(sender){
 function toGrund(sender){
 	var senderValue = sender;
 	document.getElementById("grund").value = senderValue;
-	
+
 }
 
 
@@ -39,11 +64,11 @@ function verrechnen(value){
 	var grund = document.getElementById("grund").value;
 	var verteilung = document.getElementsByClassName("geldBerechner");
 	var check = document.getElementsByClassName("check");
-	
+
 	for(var i = 0;i<check.length;i++){
-	
+
 		if(check[i].value  == grund && check[i].value == verteilung[i].name){
-			
+
 			console.log(verteilung[i].name);
 			var geld = parseFloat(verteilung[i].value);
 			console.log(geld);
@@ -54,7 +79,7 @@ function verrechnen(value){
 			verteilung[i].value = ergebnis.toFixed(2);
 		}
 	}
-	
+
 }
 
 
@@ -64,7 +89,7 @@ function datumsformatierung(date){
 	var monat = datesplitter[1];
 	var jahr = datesplitter[0];
 	var datum = (tag+"."+monat+"."+jahr);
-	
+
 	return(datum);
 }
 
@@ -79,8 +104,8 @@ function disselect(){
 	}
 	document.getElementById("beschreibung").value = "";
 	document.getElementById("preis").value = "";
-	
-	
+
+
 }
 
 
@@ -99,10 +124,10 @@ function wichIsSelected(){
 
 ///Noch nicht definiert
 function book(){
-	
-	
-	
-	
+
+
+
+
 	var selected = wichIsSelected();
 	console.log(selected);
 	//hier kommt ein Verbuchungsalgorithmus
@@ -111,7 +136,7 @@ function book(){
 	var date = document.getElementById("date").value;
 	var preis = document.getElementById("preis").value;
 	var datum = datumsformatierung(date);
-	
+
 	if(grund == "" || beschreibung == "" || preis == "" || datum == ""){
 		document.getElementById("hierfehltwas").innerHTML = "Bitte alle Felder belegen";
 		console.log("BaFb");
@@ -120,10 +145,10 @@ function book(){
 		document.getElementById("hierfehltwas").innerHTML = "";
 		disselect();
 	}
-	
-	
-	
-	
+
+
+
+
 
 
 }
@@ -158,7 +183,7 @@ function umverteilung(){
 	ruec.value = (0.1 * value).toFixed(2);
 	inve.value = (0.1 * value).toFixed(2);
 	notw.value = (0.5 * value).toFixed(2);
-	
+
 }
 
 
@@ -177,9 +202,9 @@ function geldeinbringen(ev,sender){
 	var outputId = getOutputId(geldId);
 	var inputId = sender.id;
 	geldabziehen(inputId,outputId,betrag);
-	
-	
-	//senderID.value = betrag;	
+
+
+	//senderID.value = betrag;
 	//console.log(outputId);
 	//console.log(senderValue);
 	//console.log(sender.id);
@@ -189,33 +214,33 @@ function geldeinbringen(ev,sender){
 
 function allowDrop(ev,sender){
 	ev.preventDefault();
-		
+
 }
 
 function geldabziehen(inputId,outputId,betragstring){
-	
-	
+
+
 	var input =  document.getElementById(inputId);
 	var output = document.getElementById(outputId);
 	var inputValue = parseFloat(input.value);
 	var outputValue = parseFloat(output.value);
 	var betrag = parseFloat(betragstring);
-	
+
 	inputValue  += betrag;
 	outputValue -= betrag;
-	
+
 	var a = zuBetrag(betragstring);
 	console.log(a);
-	
-	
+
+
 	//console.log(betrag);
 	//console.log(inputValue);
 	//console.log(outputValue);
-	
+
 	document.getElementById(inputId).value = inputValue.toFixed(2);
 	document.getElementById(outputId).value = outputValue.toFixed(2);
-	
-	
+
+
 	//console.log(input.value+";"+output.value+";"+betrag);
 	//dateiLeser();
 }
@@ -224,17 +249,17 @@ function geldabziehen(inputId,outputId,betragstring){
 function dateiLeser(){
 	const readline = require('readline');
 	const fs = require('fs');
-	
+
 	var file = 'C:/Users/Reinhard.Schneider/Documents/vartabtest.txt';
 	var rl = readline.createInterface({
 		input: fs.createReadStream(file),
 		output: process.stdout,
 		terminal: false
 	});
-	
+
 	rl.on('line', function (line){
 		console.log(line) // print the content of the line on each linebreak
-	});	
+	});
 }
 
 
@@ -245,10 +270,10 @@ function dateiLeser(){
 
 function zuBetrag(betrag){
 	var betragstring = betrag.toString();
-	
+
 	try{
 		console.log(betragstring);
-		
+
 		var splitter = betragstring.split(',');
 		var firstsplit = splitter[0];
 		console.log(firstsplit);
@@ -258,7 +283,7 @@ function zuBetrag(betrag){
 		console.log(parseFloat(newstring));
 	}catch{}
 	var newstring = betragstring;
-	
+
 	return(newstring);
 }
 
@@ -266,8 +291,8 @@ function zuBetrag(betrag){
 
 function getOutputId(geldId){
 	var outputId;
-	
-	
+
+
 	if(geldId == "notwendiggeld"){
 		outputId = "notw";
 	}
@@ -286,12 +311,12 @@ function getOutputId(geldId){
 	if(geldId == "investmentgeld"){
 		outputId = "invest";
 	}
-	
+
 	return(outputId);
-	
-		
-	
-	
+
+
+
+
 	//notwendiggeld
 	//bildunggeld
 	//spassgeld
