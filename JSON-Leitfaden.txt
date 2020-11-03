@@ -1,0 +1,143 @@
+Dateiendung:		".json"
+MIME-Typ:			"application/json"
+
+----------------------------------------Daten austauschen------------------------------------------------------------------------------------
+>>>>>>>>>Daten senden<<<<<<<<<<<<<<
+var myObjekt = {object1: value1, object2: value2, };
+var myJSON = JSON.stringify(myObjekt);
+window.location = "demo_json.php?x=" + myJSON;
+
+>>>>>>>>>Daten senden<<<<<<<<<<<<<<
+var myJSON = '{"object1": "value1", "object2": "value2", ...}';
+var myObjekt = JSON.parse(myJSON);
+document.getElementById("demo").innerHTML = myObjekt.name;
+
+>>>>>>>>>Daten speichern<<<<<<<<<<<<<<
+/////Daten Speichern///////
+myObjekt = {object1: value1, ...};
+myJSON = JSON.stringify(myObjekt);
+localStorage.setItem("testJSON", myJSON);
+
+/////Daten abrufen///////
+text = localStorage.getItem("testJSON");
+object = JSON.parse(text);
+document.getElementById("demo").innerHTML = object.name;
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+JSON steht für J ava S cript O bject N otation
+JSON ist ein leichtes Datenaustauschformat
+JSON ist "selbstbeschreibend" und leicht zu verstehen
+JSON ist sprachunabhängig *
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+----------------------------------------Daten austauschen------------------------------------------------------------------------------------
+
+>>>>>>>>>Syntaxregeln<<<<<<<<<<<<<<
+-Daten sind in Name / Wert-Paaren
+-Daten werden durch Kommas getrennt
+-Geschweifte Klammern halten Objekte
+-Eckige Klammern halten Arrays
+
+{"Feldname":"Feldwert"}
+
+>>>>>>>>>Werte in JSON<<<<<<<<<<<<<<
+-stringif
+-number
+-object (JSON object)
+-array
+-boolean
+-null
+
+>>>>>>>>>Zugriff auf JavaScript Objekte<<<<<<<<<<<<<<
+myObjekt = { name: "John", age: 30, city: "New York" };
+myObjekt.name = "Gilbert":				->Wert wird auf Gilbert geändert
+x = myObjekt.name;						->Wert von name in myObjekt wird auf x gespeichert
+
+
+
+
+----------------------------------------JSON vs XML------------------------------------------------------------------------------------
+
+>>>>>>>>>JSON-Format<<<<<<<<<<<<<<
+{"employees":[
+	{"firstName":"John", "lastName":"Doe"},
+	{"firstName":"Anna", "lastName":"Smith"},
+	{"firstName":"Peter", "lastName":"Jones"}
+]}
+
+
+>>>>>>>>>XML-Format<<<<<<<<<<<<<<
+<employees>
+	<employee>
+		<firstName>John</firstName> <lastName>Doe</lastName>
+	</employee>
+	<employee>
+		<firstName>Anna</firstName> <lastName>Smith</lastName>
+	</employee>
+	<employee>
+		<firstName>Peter</firstName> <lastName>Jones</lastName>
+	</employee>
+</employees>
+
+
+----------------------------------------JSON Datentypen------------------------------------------------------------------------------------
+
+Zugelassene Datentypen:
+-string
+-number
+-object (JSON Objekte)
+-array
+-boolean
+-null
+
+>>>>>>>>>Strings<<<<<<<<<<<<<<
+{"name":"John"}
+
+>>>>>>>>>Numbers<<<<<<<<<<<<<<
+{"age": 30}
+
+>>>>>>>>>Objekte<<<<<<<<<<<<<<
+{
+"employee":{"name":"John", "age":30, "city":"New York"}
+}
+
+>>>>>>>>>Arrays<<<<<<<<<<<<<<
+{
+"employees":[ "John", "Anna", "Peter" ]
+}
+
+>>>>>>>>>Arrays<<<<<<<<<<<<<<
+{ "sale":true }
+
+>>>>>>>>>Arrays<<<<<<<<<<<<<<
+{ "middlename":null }
+
+
+
+
+----------------------------------------Daten austauschen------------------------------------------------------------------------------------
+
+>>>>>>>>>Arrays<<<<<<<<<<<<<<
+>>>>>>>>>Arrays<<<<<<<<<<<<<<
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+----------------------------------------Daten austauschen------------------------------------------------------------------------------------
+----------------------------------------Daten austauschen------------------------------------------------------------------------------------
+----------------------------------------Daten austauschen------------------------------------------------------------------------------------
+----------------------------------------Daten austauschen------------------------------------------------------------------------------------
