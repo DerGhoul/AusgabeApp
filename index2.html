@@ -8,8 +8,22 @@
 </head>
 <body id="body">
 <script>
-var framewidth = document.getElementById("body").clientwidth;
-//console.log(framewidth);
+
+var xhttp = new XMLHttpRequest();
+xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    myFunction(this);
+    }
+};
+xhttp.open("GET", "UserInterface.xml", true);
+xhttp.send();
+
+function myFunction(xml) {
+    var xmlDoc = xml.responseXML;
+    document.getElementById("demo").innerHTML =
+    xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
+}
+
 </script>
 
 <h2 id="header">Das ist ein Ausgabenrechner</h2>
@@ -18,10 +32,10 @@ var framewidth = document.getElementById("body").clientwidth;
 
 <div ><!--Hier wird der Lohn implementiert-->
 	<label>Lohn</label><br>
-	<input 
-		type="number" 
-		name="lohn" 		
-		id="lohn" 		
+	<input
+		type="number"
+		name="lohn"
+		id="lohn"
 		value="500"
 		onchange="umverteilung()" >
 </div>
@@ -31,26 +45,26 @@ var framewidth = document.getElementById("body").clientwidth;
 <div class="diva">
 	<div ><!--Hier wird die "Notwendig" implementiert-->
 		<label>Notwendigkeiten</label><br>
-			<input 	type="number" 
-					name="Notwendigkeiten"  
-					class="geldBerechner"	 
-					id="notw"   
-					readonly="readonly"		
+			<input 	type="number"
+					name="Notwendigkeiten"
+					class="geldBerechner"
+					id="notw"
+					readonly="readonly"
 					value=""
 					ondrop="geldeinbringen(event,this)"
 					ondragover="allowDrop(event,this)"><br>
-					
-					
+
+
 		<div class="divc">
-			<input 	type="checkbox" 
-					class="check"	
-					id="isNotwendigkeitSelected" 	
-					name ="notwendig" 	
+			<input 	type="checkbox"
+					class="check"
+					id="notwendigkeitChecked"
+					name ="notwendig"
 					value="Notwendigkeiten"
 					onclick="selectchanger(this)">
 			</input>
 			<img 	id="notwendiggeld"
-					src="geldschein.png"  
+					src="geldschein.png"
 					draggable="true"
 					ondragstart="gelduebertragen(event,this)" ></img>
 		</div>
@@ -59,26 +73,26 @@ var framewidth = document.getElementById("body").clientwidth;
 
 	<div ><!--Hier wird die "Bildung" implementiert-->
 		<label>Bildung</label><br>
-			<input 	type="number" 
-					name="Bildung" 	  
-					class="geldBerechner"	   
-					readonly="readonly"		 
-				 	id="bildung" 	
+			<input 	type="number"
+					name="Bildung"
+					class="geldBerechner"
+					readonly="readonly"
+				 	id="bildung"
 					value=""
 					ondrop="geldeinbringen(event,this)"
 					ondragover="allowDrop(event,this)"><br>
-					
-					
+
+
 		<div class="divc">
-			<input 	type="checkbox" 
-					class="check"	
-					id="bildungChecked" 	
-					name ="bildung" 	
+			<input 	type="checkbox"
+					class="check"
+					id="bildungChecked"
+					name ="bildung"
 					value="Bildung"
 					onclick="selectchanger(this)">
 			</input>
 			<img 	id="bildunggeld"
-					src="geldschein.png"  
+					src="geldschein.png"
 					draggable="true"
 					ondragstart="gelduebertragen(event,this)" ></img>
 		</div>
@@ -87,53 +101,53 @@ var framewidth = document.getElementById("body").clientwidth;
 
 	<div ><!--Hier wird die "Spass" implementiert-->
 		<label>Spass</label><br>
-			<input 	type="number" 
-					name="Spass" 	  
-					class="geldBerechner"	   
-					readonly="readonly"			 
-					id="spass" 		
+			<input 	type="number"
+					name="Spass"
+					class="geldBerechner"
+					readonly="readonly"
+					id="spass"
 					value=""
 					ondrop="geldeinbringen(event,this)"
 					ondragover="allowDrop(event,this)"><br>
-					
-					
+
+
 		<div class="divc">
-			<input 	type="checkbox" 
-					class="check"	
-					id="spassChecked" 	
-					name ="spass" 	
+			<input 	type="checkbox"
+					class="check"
+					id="spassChecked"
+					name ="spass"
 					value="Spass"
 					onclick="selectchanger(this)">
 			</input>
 			<img 	id="spassgeld"
-					src="geldschein.png"  
-					draggable="true"		
+					src="geldschein.png"
+					draggable="true"
 					ondragstart="gelduebertragen(event,this)" ></img></div>
 	</div>
 
 
 	<div ><!--Hier wird die "Sparen" implementiert-->
 		<label>Sparen</label><br>
-			<input type="number" 
-					name="Sparen"   
-					class="geldBerechner"		   
-					readonly="readonly"				
-					id="spar" 	 
+			<input type="number"
+					name="Sparen"
+					class="geldBerechner"
+					readonly="readonly"
+					id="sparen"
 					value=""
 					ondrop="geldeinbringen(event,this)"
 					ondragover="allowDrop(event,this)"><br>
-					
-					
+
+
 		<div class="divc">
-			<input 	type="checkbox" 
-					class="check"	
-					id="sparenChecked" 	
-					name ="sparen" 	
+			<input 	type="checkbox"
+					class="check"
+					id="sparenChecked"
+					name ="sparen"
 					value="Sparen"
 					onclick="selectchanger(this)">
 			</input>
 			<img 	id="sparengeld"
-					src="geldschein.png"  
+					src="geldschein.png"
 					draggable="true"
 					ondragstart="gelduebertragen(event,this)" ></img>
 		</div>
@@ -142,26 +156,26 @@ var framewidth = document.getElementById("body").clientwidth;
 
 	<div ><!--Hier wird die "Ruecklagen" implementiert-->
 		<label>Ruecklagen</label><br>
-			<input 	type="number" 
-					name="Ruecklagen" 	  
-					class="geldBerechner"		   
-					readonly="readonly"			 
-					id="rueck" 		
+			<input 	type="number"
+					name="Ruecklagen"
+					class="geldBerechner"
+					readonly="readonly"
+					id="ruecklagen"
 					value=""
 					ondrop="geldeinbringen(event,this)"
 					ondragover="allowDrop(event,this)"><br>
-					
-					
+
+
 		<div class="divc">
-			<input 	type="checkbox" 
-					class="check"	
-					id="ruecklagenChecked" 	
-					name ="ruecklagen" 	
+			<input 	type="checkbox"
+					class="check"
+					id="ruecklagenChecked"
+					name ="ruecklagen"
 					value="Ruecklagen"
 					onclick="selectchanger(this)">
 			</input>
 			<img 	id="ruecklagengeld"
-					src="geldschein.png"  
+					src="geldschein.png"
 					draggable="true"
 					ondragstart="gelduebertragen(event,this)" ></img>
 		</div>
@@ -170,26 +184,26 @@ var framewidth = document.getElementById("body").clientwidth;
 
 	<div ><!--Hier wird die "Investment" implementiert-->
 		<label>Investment</label><br>
-			<input 	type="number" 
-					name="Investment"	   
-					class="geldBerechner"		   
-					readonly="readonly"			 
-					id="invest" 	
+			<input 	type="number"
+					name="Investment"
+					class="geldBerechner"
+					readonly="readonly"
+					id="invest"
 					value=""
 					ondrop="geldeinbringen(event,this)"
 					ondragover="allowDrop(event,this)"><br>
-		
-		
+
+
 		<div class="divc">
-			<input 	type="checkbox" 
-					class="check"	
-					id="investmentChecked" 	
-					name ="investment" 	
+			<input 	type="checkbox"
+					class="check"
+					id="investmentChecked"
+					name ="investment"
 					value="Investment"
 					onclick="selectchanger(this)">
 			</input>
 			<img 	id="invesmentgeld"
-					src="geldschein.png"  
+					src="geldschein.png"
 					draggable="true"
 					ondragstart="gelduebertragen(event,this)" ></img>
 		</div>
@@ -221,7 +235,7 @@ document.getElementById("date").value = value;
 
 
 
-<input type="number" 		class="parameter" name="Preis" 		id="preis" 	pattern=""		placeholder="00,00" 
+<input type="number" 		class="parameter" name="Preis" 		id="preis" 	pattern=""		placeholder="00,00"
 		onblur="verrechnen(this.value)">
 </div>
 
@@ -240,7 +254,7 @@ document.getElementById("date").value = value;
 
 
 <div><!--Implamentiert das Datei load feld-->
-<input type="file" 		class="parameter"	name="Rechnung" 	id="rechnung" 		value="" 
+<input type="file" 		class="parameter"	name="Rechnung" 	id="rechnung" 		value=""
 		accept=".pdf,.png,.jpg,.jpeg">
 </div><br>
 
