@@ -4,29 +4,12 @@
 <meta charset="UTF-8">
 <title>Ausgabenrechner</title>
 <link type="text/css" rel="stylesheet" href="index.css" />
-<script src="index2.js"></script>
+<script src="index.js"></script>
 </head>
 <body id="body">
-<script>
 
-var xhttp = new XMLHttpRequest();
-xhttp.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-    myFunction(this);
-    }
-};
-xhttp.open("GET", "UserInterface.xml", true);
-xhttp.send();
 
-function myFunction(xml) {
-    var xmlDoc = xml.responseXML;
-    document.getElementById("demo").innerHTML =
-    xmlDoc.getElementsByTagName("title")[0].childNodes[0].nodeValue;
-}
-
-</script>
-
-<h2 id="header">Das ist ein Ausgabenrechner</h2>
+<!--h2 id="header">Das ist ein Ausgabenrechner</h2-->
 
 
 
@@ -38,17 +21,23 @@ function myFunction(xml) {
 		id="lohn"
 		value="500"
 		onchange="umverteilung()" >
-</div>
+</div><br>
 
-<br>
+<!--div class="diva"-->
 
-<div class="diva">
+
+
+
+
+
+
+
 	<div ><!--Hier wird die "Notwendig" implementiert-->
 		<label>Notwendigkeiten</label><br>
 			<input 	type="number"
 					name="Notwendigkeiten"
 					class="geldBerechner"
-					id="notw"
+					id="notwendigkeiten"
 					readonly="readonly"
 					value=""
 					ondrop="geldeinbringen(event,this)"
@@ -208,12 +197,27 @@ function myFunction(xml) {
 					ondragstart="gelduebertragen(event,this)" ></img>
 		</div>
 	</div>
-</div><br>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<!--/div--><br>
 
 
 
 
-<div class="divb" ><!--Hier werden die Dateiparameter erfasst-->
+<!--div class="divb" ><!--Hier werden die Dateiparameter erfasst-->
 
 	<div> <!--Hier werden die Dateiparameter erfasst-->
 <input type="text" 		class="parameter"	name="Grund" 		id="grund" 			placeholder="Grund" readonly="readonly" >
@@ -223,10 +227,14 @@ function myFunction(xml) {
 
 <script><!--Hier wird das heutige Datum vorbelegt-->
 var dateTime = new Date();
-var day = dateTime.getDate();
+var day = (dateTime.getDate()+"");
 var month = dateTime.getMonth()+1;
 if (month.length == 1) {
 	month = ("0"+month);
+}
+
+if (day.length == 1) {
+	day = ("0"+day);
 }
 var year = dateTime.getFullYear();
 var value = (year+"-"+month+"-"+day);
@@ -239,7 +247,7 @@ document.getElementById("date").value = value;
 		onblur="verrechnen(this.value)">
 </div>
 
-</div>
+<!--/div-->
 
 
 
@@ -253,10 +261,10 @@ document.getElementById("date").value = value;
 
 
 
-<div><!--Implamentiert das Datei load feld-->
+<!--div><!--Implamentiert das Datei load feld>
 <input type="file" 		class="parameter"	name="Rechnung" 	id="rechnung" 		value=""
 		accept=".pdf,.png,.jpg,.jpeg">
-</div><br>
+</div><br-->
 
 
 
@@ -276,8 +284,6 @@ document.getElementById("date").value = value;
 
 
 
-
-<br><br><br><br>
 <!--p><a href="index.html" >Hier gehts zur ersten Seite</a></p-->
 
 

@@ -1,0 +1,921 @@
+----------------------------------------Events--------------------------------------------
+With single quotes:
+		<element event='some JavaScript'>
+With double quotes:
+		<element event="some JavaScript">
+		
+----------------------------------------Strings----------------------------------------------------------------------------------------
+\b	Backspace
+\f	Form Feed
+\n	New Line
+\r	Carriage Return
+\t	Horizontal Tabulator
+\v	Vertical Tabulator
+
+---->Definition
+var x = "John";             
+var y = new String("John");
+
+---->Operation
+"==" = Gleichheit von Werten 
+"===" = Gleichheit von Werten und Typen
+
+
+
+----------------------------------------String-Methoden--------------------------------------------
+length
+indexOf()
+lastIndexOf()
+search()
+
+
+string.length;									->Gibt Länge einer Zeichenkette zurück
+string.indexOf("substring");	<Fehler = -1>	->Gibt Position einer Zeichenkette in einer Zeichenkette zurück
+string.lastIndexOf("substring");<Fehler = -1>	->Gibt letzte Position einer Zeichenkette in einer Zeichenkette zurück
+
+string.indexOf("substring",startposition);
+string.lastIndexOf("substring",startposition);
+
+string.search("substring")						->Gibt Position einer Zeichenkette zurück
+
+
+--->search kann regex,indexof kann startposition
+
+slice(start, end)
+substring(start, end)
+substr(start, length)
+replace
+
+str.slice(Startschnittp,Endschnittp); 			->gibt inhalt zwischen den Schnittpunkten zurück
+str.slice(-Endschnittp,-Startschnittp);			->bei negativem Vorzeichen wird von hinten gezählt
+str.slice(Startschnittp);						->alles ab dem Schnitpunkt wird zurückgegeben
+str.slice(-Endschnittp);						->bei negativem Vorzeichen wird von hinten gezählt
+
+
+str.substring(Startschnittp,Endschnittp);		->gleich wie slice(), kann aber kein negatives Vorzeichen benutzen
+
+
+str.substr(Startschnittp,Länge des Strings);  	->schneidet alles vorherige ab,und schneidet länge zu
+str.substr(-Startschnittp,Länge des Strings);	->schneidet alles vorherige ab, fängt von hinten an, schneidet länge zu
+str.substr(Startschnittp);						->schneidet alles vorherige ab
+str.substr(Startschnittp);						->schneidet alles vorherige ab, fängt von hinten an zu zählen
+
+
+str.replace("strToReplace","strIsReplacedWith");	->ersetzt ersten String mit zweitem, ersetzt nur ersten gefundenen, beachtet groß/klein schreibung
+str.replace(/"strToReplace"/i, "strIsReplacedWith");	->/""/i lässt keine Groß/Kleinschreibung beachten
+str.replace(/"strToReplace"/g, "strIsReplacedWith");->ersetzt alle Strings die er findet
+
+
+toUpperCase()
+toLowerCase()
+concat()
+trim()
+
+str.toUpperCase();								->ersetzt jeden Kleinbuchstaben durch einen Großbuchstaben
+str.toLowerCase();								->ersetzt jeden Großbuchstaben durch einen Kleinbuchstaben
+str.concat(string2,string3,...);				->verknüpft Strings
+str.trim();										->entfernt Leerzeichen links und rechts von einem String
+
+
+charAt(position)
+charCodeAt(position)
+"Property access"[]
+split()
+
+
+str.charAt("intwert");			->Gibt Zeichen vom Typ char am wert intwert aus
+str.charCodeAt("intwert");		->Gibt UTF-16 code des am intwert liegenden Buchstaben zurück
+str["intwert"];					->Gibt Zeichen an Stelle des intwerts aus
+str.split(""splitter"");		->Gibt eine Zeichenkette zurück
+
+
+
+----------------------------------------Number-Methoden--------------------------------------------
+
+toString()
+toExponential()
+toFixed()
+toPrecision()
+valueOf()
+Number()
+parseFloat()
+parseInt()
+MAX_VALUE
+MIN_VALUE
+POSITIVE_INFINITY
+NEGATIVE_INFINITY
+NAN
+
+
+number.toString();				->gibt Stringwert zurück
+number.toString(intwert ->36) 	->gibt binäres oder andere Zählsysteme zurück
+number.toExponential(intwert)	->verschiebt die Kommastelle bzw nimmt so oft mal 10 wie der intwert
+number.toFixed(intwert)			->beschränkt die Zahlen hinter dem Komma auf intwert Stellen
+number.toPrecision(intwert)		->rundet auf intwert zahlen, angefangen bei der Ersten
+number.valueOf();				->gibt Zahlenwert einer Variable,Zahlenwerts,Rechnung und Strings zurück
+number.Number();				->gibt Zahlenwert einer Variable zurück
+number.parseFloat();			->gibt Fließkommazahl einer Variable zurück
+number.parseInt();				->gibt Ganzahl einer Variable zurück
+Number("Wahrheitswert");		->gibt 1 für wahr und 0 für falsch zurück
+Number("Datum");				->kann Datum in Zahlenwert umwandeln, Anzahl der Millisekunden seit 1.1.1970
+Number.MAX_VALUE;				->Gibt maximalwert in javascript zurück
+Number.MIN_VALUE				->Gibt minimalwert in javascript zurück
+
+
+
+
+----------------------------------------Array-Methoden--------------------------------------------
+
+var arrayname = ["string1", "string2", "string3",...];
+var arrayname = new Array("string1", "string2", "string3",...);
+alert(arrayname);					->Zugriff auf array über den Namen,gib alle Elemente des Arrays aus
+var arrayname = [firstType:"string1/object1",...];
+
+array.length;						->Gibt die Anzahl an Elementen zurück
+
+Array.forEach():
+myArray.forEach(myFunction) 		->ruft für jedes Element die Funktion auf, 
+									->Funktion muss einen Eingabewert besitzen, dieser ist: item value, item index,array itself
+
+Array.push("newElement")			->fügt neues Element dem Array hinzu
+Array[Array.length] = "newElement"  ->fügt ebenfalls neues Element hinzu/sollte bei großen Listen nicht verwendet werden
+
+Arten ein Array zu erzeugen:
+var Array = new Array();			->Schlecht bei nur einer Zahl wird ein Array der Länge, entsprechend der Größe dieser Zahl zurückgegeben
+var Array = [];						->Gut
+
+
+Überprüfen ob es sich um ein Array handelt
+Array.isArray();											->Ansatz1
+function isArray(x) {										->Ansatz2
+  return x.constructor.toString().indexOf("Array") > -1;}
+var myArray = [element1,...];								->Ansatz3
+myArray instanceof Array;			
+
+
+Array.toString();					->Convertiert einen Array in eine Zeichenkette, die die Werte durch Komma getrennt zurückgibt
+Array.toString("*");				->Gleich zur toString() Methode, der Seperator kann selbst bestimmt werden
+
+Array.pop();						->entfernt das letzte Element eines Arrays
+var x = Array.pop();				->gibt den index des Elements zurück, das entfernt wurde
+Array.push();						->fügt neues Element hinten an
+var x = Array.push();				->Gib den index des eingefügten Elements zurück
+Array.shift();						->entfernt erstes Element aus dem Array
+var x = Array.shift();				->gib den Wert des entfernten Elements zurück
+Array.unshift();					->fügt neues Element am Anfang ein
+var x = Array.unshift();			->gibt die neue Länge des Arrays an
+
+
+Element eines Arrays ändern:
+Array[index] = newElement;			->Ändert den Wert des Elements an er Stelle des angegebenen indexes mit dem neuen Element
+
+Element eines Arrays löschen:
+delete Array[index];				->Entfernt das Element an der Stelle und wandelt es in undefinded um
+
+Array.splice("Position","Menge","element1","element2",...)->Erste Stele gibt die Position an an der Element eingefügt werden sollen/
+															Zweite Stelle gibt die Anzahl an Elemente wieder die gelöscht werden sollen/
+															Alle weiteren Stellen geben die Elemente an die eingefügt werden sollen
+
+Array.splice("Position","Menge");	->Entfernt die Menge an Elementen an der Postition ohne Lücken															
+
+newArray = Array1.concat(Array2,..);->Fügt zwei oder mehr Arrays zusammen
+newArray = Array1.concat("String1");->Fügt Element String1 dem Element hinzu
+
+var newArray = Array.slice(index);	->Kopiert alle Elemente ab der Stelle index in ein neues Array
+var newArray = Array.slice(index1,index2);->kopiert alle Elemente von Stelle index1 bis (nicht eingeschlossen)index2 in ein neues Array
+
+
+
+----------------------------------------Array-Sortierung--------------------------------------------
+
+Array.sort();						->Sortiert die Elemente im Array alphabetisch
+Array.reverse();					->kehr die Reihenfolge des Arrays um
+
+Array.sort(function(a, b){return a - b}); ->Sortierung von Zahlen mit der Compare function
+Array.sort(function(a, b){return b - a}); ->Absteigende Sortierung von Zahlen mit der Compare function
+
+Compare-Funktion:
+function(a,b){return a - b}			->Das Ergebnis ist entweder negativ,null oder positiv
+									->Wenn das Ergebnis negativ ist a wird vor b einsortiert
+									->Wenn das Ergebnis positiv ist b wird vor a einsortiert
+									->Wenn das Ergebnis null ist wird nichts geändert
+
+Zufällige Reihenfolge:
+Array.sort(function(a,b){return 0.5 - Math.random()}); ->Gibt zufällige Reihenfolg zurück
+
+
+Kleinster und Größter Wert eines Arrays:
+Array.sort(function(a,b){return a - b});
+x = Array[0];						->kleinster Wert
+x = Array[Array.length-1]			->größter Wert
+function myArrayMin(arr) {			->kleinster Wert
+  return Math.min.apply(null, arr);
+}
+function myArrayMax(arr) {			->größter Wert
+  return Math.max.apply(null, arr);
+}
+function myArrayMin(arr) {			->kleinster Wert
+  var len = arr.length;
+  var min = Infinity;
+  while (len--) {
+    if (arr[len] < min) {
+      min = arr[len];
+    }
+  }
+  return min;
+}
+function myArrayMax(arr) {			->größter Wert
+  var len = arr.length;
+  var max = -Infinity;
+  while (len--) {
+    if (arr[len] > max) {
+      max = arr[len];
+    }
+  }
+  return max;
+}
+
+Sortieren von Arrays mit Objekten:
+Array.sort(function(a, b){return a.year - b.year});
+
+Array.sort(function(a, b){
+  var x = a.type.toLowerCase();
+  var y = b.type.toLowerCase();
+  if (x < y) {return -1;}
+  if (x > y) {return 1;}
+  return 0;
+});
+
+
+
+----------------------------------------Array-Iteration--------------------------------------------
+
+
+var newArray = Array.map(myFunction); 			->durchläuft die Methode mit und für jedes Element und speichert dies in neues Array Funktion(value,index,itself)
+var newArray = Array.filter(myFunction);		->durchläuft/testet die Methode mit jedem Element gibt nur Elemente zurück die Test bestehen Funktion(value,index,itself)
+var variable = Array.reduce(myFunction);		->reduziert die Methode auf einen Wert Funktion(value,index,itself,total) total = der initiierungswert oder vorher zurückgegebene Wert
+var variable = Array.reduceRight(myFunction);	->gleich zu reduce() fängt aber rechts an
+var newArray = Array.every(myFunction);			->schaut ob alle Elemente einen Test bestehen Funktion(value",index,itself")
+var newArray = Array.some(myFunction);			->schaut ob wenigstens ein Element den Test besteht Funktion(value,index,itself)
+var x = Array.find(myFunction);					->Gibt den Wert des ersten Elements zurück, dass den Test besteht Funktion(value,index,itself)
+
+
+var x = Array.indexOf("Element");	Fehler: -1	->Sucht eine Element im Array und gibt den Index zurück
+var x = Array.indexOf("Element",start); ""		->Sucht ein Element ab einer bestimmten Position und gibt index zurück
+var x = Array.lastIndexOf("Element");	""		->Gibt letzten treffer zurück
+var x = Array.lastIndexOf("Element",start); ""	->Gibt letzten treffer zurück angefangen von hinten gezählt an startposition
+
+
+
+
+----------------------------------------Datums Objekte--------------------------------------------
+
+var d = new Date();
+
+new Date()
+new Date(year, month, day, hours, minutes, seconds, milliseconds)
+new Date(milliseconds)
+new Date(date string)
+
+7 Zahlen spezifizieren: Jahr, Monat, Tag, Stunde, Minute, Sekunde und Millisekunde (in dieser Reihenfolge)
+6 Zahlen spezifizieren: Jahr, Monat, Tag, Stunde, Minute, Sekunde
+5 Zahlen spezifizieren: Jahr, Monat, Tag, Stunde, Minute
+4 Zahlen spezifizieren: Jahr, Monat, Tag, Stunde
+3 Zahlen spezifizieren: Jahr, Monat, Tag
+2 Zahlen spezifizieren: Jahr, Monat
+1 Zahlen spezifizieren: Millisekunde
+
+Daten aus letztem Jahrhundert:
+new Date(99, 11, 24); 					->24.11.1999
+new Date(9, 11, 24);					->24.11.1909
+d.toISOString();						->2020-11-02T12:34:31.586Z
+
+d = new Date("2015-03-25");
+d = new Date("25 Mar 2015");			->Reihenfolge von Monat und Tag ist egal, wenn der Monat Ausgeschrieben/abgekürzt ist
+
+Date.parse();							->Gibt die Milisekunden seit 01.01.1970 zurück
+d.getTime();							->Gibt die Milisekunden seit 01.01.1970 zurück
+
+d.getFullYear();						->Gibt Jahr vierstellig zurück
+d.getMonth();							->Gibt Monat (0-11) zurück
+										->var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+										  document.getElementById("demo").innerHTML = months[d.getMonth()];
+d.getDate();							->Gibt Tag (1-31) zurück
+d.getHours();							->Gibt Stunde (0-23) zurück
+d.getMinutes();							->Gibt Minute (0-59) zurück
+d.getSeconds();							->Gibt Sekunde (0-59) zurück
+d.getDay();								->Gibt Wochentag (0-6) zurück
+										->var days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+										  document.getElementById("demo").innerHTML = days[d.getDay()];
+									
+getUTCDate()			Same as getDate(), but returns the UTC date
+getUTCDay()				Same as getDay(), but returns the UTC day
+getUTCFullYear()		Same as getFullYear(), but returns the UTC year
+getUTCHours()			Same as getHours(), but returns the UTC hour
+getUTCMilliseconds()	Same as getMilliseconds(), but returns the UTC milliseconds
+getUTCMinutes()			Same as getMinutes(), but returns the UTC minutes
+getUTCMonth()			Same as getMonth(), but returns the UTC month
+getUTCSeconds()			Same as getSeconds(), but returns the UTC seconds
+
+
+setDate()				Set the day as a number (1-31)
+setFullYear()			Set the year (optionally month and day)
+setHours()				Set the hour (0-23)
+setMilliseconds()		Set the milliseconds (0-999)
+setMinutes()			Set the minutes (0-59)
+setMonth()				Set the month (0-11)
+setSeconds()			Set the seconds (0-59)
+setTime()				Set the time (milliseconds since January 1, 1970)
+
+
+----------------------------------------Math-Objekte--------------------------------------------
+
+Math.round(index)						->rundet zum nächstgelegenen Integer
+Math.pow(index1,index2)					->potenziert ersten Wert mit zweitem
+Math.sqrt(index)						->gibt Wurzel zurück
+Math.abs(x)								->gibt den Betrag zurück
+Math.ceil(x)							->gibt aufgerundeten nächsten Integer zurück
+Math.floor(x)							->gibt abgerundeten nächsten Integer zurück
+Math.sin(x)								->gibt den Sinus, der zwischen 1 und -1 zurück x ist gegeben in radiant x*(PI/180)
+Math.sin(x * Math.PI / 180)
+Math.cos(x)								->gibt den Cosinus zurück (-1 - 1)
+Math.cos(x * Math.PI/180);
+
+Math.min(number1,number2,number3,...)	->gibt kleinsten Wert zurück
+Math.max(number1,number2,number3,...)	->gibt größten Wert zurück
+Math.random();							->gibt zufällige zahl zurück zwischen 0(eingeschlossen) und 1(ausgenommen)
+
+Math.E        							-> returns Euler's number
+Math.PI       							-> returns PI
+Math.SQRT2    							-> returns the square root of 2
+Math.SQRT1_2  							-> returns the square root of 1/2
+Math.LN2      							-> returns the natural logarithm of 2
+Math.LN10     							-> returns the natural logarithm of 10
+Math.LOG2E    							-> returns base 2 logarithm of E
+Math.LOG10E   							-> returns base 10 logarithm of E
+
+abs(x)					Returns the absolute value of x
+acos(x)					Returns the arccosine of x, in radians
+acosh(x)				Returns the hyperbolic arccosine of x
+asin(x)					Returns the arcsine of x, in radians
+asinh(x)				Returns the hyperbolic arcsine of x
+atan(x)					Returns the arctangent of x as a numeric value between -PI/2 and PI/2 radians
+atan2(y, x)				Returns the arctangent of the quotient of its arguments
+atanh(x)				Returns the hyperbolic arctangent of x
+cbrt(x)					Returns the cubic root of x
+ceil(x)					Returns x, rounded upwards to the nearest integer
+cos(x)					Returns the cosine of x (x is in radians)
+cosh(x)					Returns the hyperbolic cosine of x
+exp(x)					Returns the value of Ex
+floor(x)				Returns x, rounded downwards to the nearest integer
+log(x)					Returns the natural logarithm (base E) of x
+max(x, y, z, ..., n)	Returns the number with the highest value
+min(x, y, z, ..., n)	Returns the number with the lowest value
+pow(x, y)				Returns the value of x to the power of y
+random()				Returns a random number between 0 and 1
+round(x)				Rounds x to the nearest integer
+sin(x)					Returns the sine of x (x is in radians)
+sinh(x)					Returns the hyperbolic sine of x
+sqrt(x)					Returns the square root of x
+tan(x)					Returns the tangent of an angle
+tanh(x)					Returns the hyperbolic tangent of a number
+trunc(x)				Returns the integer part of a number (x)
+
+
+
+
+
+----------------------------------------Random-Math--------------------------------------------
+
+Math.random								->zufällige Zahl zwischen 0 und 1(ausgeschlossen)
+Math.floor(Math.random() * 10)			->zufällige Zahl zwischen 0 und 9
+Math.floor(Math.random() * 11)			->zufällige Zahl zwischen 0 und 10
+Math.floor(Math.random() * 100)			->zufällige Zahl zwischen 0 und 99
+Math.floor(Math.random() * 101)			->zufällige Zahl zwischen 0 und 100
+Math.floor(Math.random() * 10) + 1		->zufällige Zahl zwischen 1 und 10
+Math.floor(Math.random() * 100) + 1 	->zufällige Zahl zwischen 1 und 100
+function getRndInteger(min, max) {		->zufällige Zahl zwischen min und max(ausgeschlossen)
+  return Math.floor(Math.random() * (max - min) ) + min;
+}
+function getRndInteger(min, max) {		->zufällige Zahl zwischen min und max
+  return Math.floor(Math.random() * (max - min + 1) ) + min;
+}
+
+
+
+
+
+----------------------------------------Boolean-Methoden--------------------------------------------
+
+
+==					equal to				if (day == "Monday")
+>					greater than			if (salary > 9000)
+<					less than				if (age < 18)
+
+
+Boolean(x);
+
+-Wenn x keinen Wert hat ist der Boolean Wert false (0,"",undefined,false,NaN)
+-Wenn x einen Wert hat ist der Boolean Wert true
+
+var x = new Boolean(false);				->Boolean kann ein Objekt sein
+
+
+----------------------------------------Vergleichs-Operatoren--------------------------------------------
+
+
+==		equal to							x == 8			false	
+											x == 5			true	
+											x == "5"		true	
+===		equal value and equal type			x === 5			true	
+											x === "5"		false	
+!=		not equal							x != 8			true	
+!==		not equal value or not equal type	x !== 5			false	
+											x !== "5"		true	
+											x !== 8			true	
+>		greater than						x > 8			false	
+<		less than							x < 8			true	
+>=		greater than or equal to			x >= 8			false	
+<=		less than or equal to				x <= 8			true
+
+
+&&		and					(x < 10 && y > 1) is true	
+||		or					(x == 5 || y == 5) is false	
+!		not					!(x == y) is true
+
+
+
+
+
+
+
+----------------------------------------if - else if - else--------------------------------------------
+
+--->Syntax<---
+if (condition1) {
+  //  block of code to be executed if condition1 is true
+} else if (condition2) {
+  //  block of code to be executed if the condition1 is false and condition2 is true
+} else {
+  //  block of code to be executed if the condition1 is false and condition2 is false
+}
+
+
+
+----------------------------------------Switch-Methoden--------------------------------------------
+--->Syntax<---
+switch(expression) {
+  case x:
+    // code block
+    break;
+  case y:
+    // code block
+    break;
+  default:
+    // code block
+}
+
+So funktionierts:
+-Der Switch-Ausdruck wird einmal ausgewertet
+-Der Wert wird mit jedem Wert in jedem Fall verglichen
+-Wenn es einen Treffer gibt, wird der Code-Block ausgeführt
+-Wenn es keinen Treffer gibt, wird der Default Code-Block ausgeführt
+
+Der Default Code-Block muss nicht der letzte Block sein, er kann auch an anderer Position stehen
+
+--->Syntax2<---
+switch(expression) {
+  case x:
+  case y:
+    // code block
+    break;
+  case a:
+  case b:
+    // code block
+    break;
+  default:
+    // code block
+}
+
+----------------------------------------For-Schleifen--------------------------------------------
+For-Schleife
+--->Syntax<---
+for (statement 1; statement 2; statement 3) {
+  // code block to be executed
+}
+
+
+--->Beispiel<---
+for (i = 0; i < 5; i++) {
+  text += "Die Zahl ist" + i + "<br>";
+}
+
+
+----------------------------------------For/In-Schleife--------------------------------------------------------------------------------
+--->Syntax<---
+for (variable if iterable) {
+  // code block to be executed
+}
+
+
+--->Beispiel<---
+var person = {fname:"John", lname:"Doe", age:25};
+
+var text = "";
+var x;
+for (x in person) {
+  text += person[x];
+}
+
+
+
+----------------------------------------For/Of-Schleife--------------------------------------------------------------------------------
+--->Syntax<---
+for (variable of iterable) {
+  // code block to be executed
+}
+
+
+--->Beispiel<---
+var cars = ["BMW", "Volvo", "Mini"];
+var x;
+
+for (x of cars) {
+  document.write(x + "<br >");
+}
+
+
+
+----------------------------------------While-Schleife--------------------------------------------------------------------------------
+--->Syntax<---
+while (condition) {
+  // code block to be executed
+}
+
+
+--->Beispiel<---
+while (i < 10) {
+  text += "The number is " + i;
+  i++;
+}
+
+
+
+----------------------------------------Do-While-Schleife--------------------------------------------------------------------------------
+--->Syntax<---
+do {
+  // code block to be executed
+}
+while (condition);
+
+
+--->Beispiel<---
+do {
+  text += "The number is " + i;
+  i++;
+}
+while (i < 10);
+
+
+
+----------------------------------------Break and Continue--------------------------------------------
+
+break springt aus einer schleife heraus 		->Schleife endet
+continue überspringt ein Schleifendurchlauf		->Schleife endet nicht
+
+break labelname									->kann aus gesamtem Codeblock rausspringen
+
+----------------------------------------Typ-Convertierung--------------------------------------------
+In JavaScript gibt es 5 verschiedene Datentypen:
+string
+number
+boolean
+object
+function
+
+Es gibt 6 Typen von Objekten:
+Object
+Date
+Array
+String
+Number
+Boolean
+
+Und zwei Typen die keinen Wert annehmen können:
+null
+undefined
+
+
+Der Datentyp von NaN ist eine Zahl
+Der Datentyp von array ist ein Objekt
+Der Datentyp eines date ist ein Objekt
+Der Datentyp von null ist ein Objekt
+Der Datentyp von undefined variable ist undefined *
+Der Datentyp einer variable der noch kein Wert zugewiesen wurde ist undefined *
+
+toExponential()			Returns a string, with a number rounded and written using exponential notation.
+toFixed()				Returns a string, with a number rounded and written with a specified number of decimals.
+toPrecision()			Returns a string, with a number written with a specified length
+
+getDate()				Get the day as a number (1-31)
+getDay()				Get the weekday a number (0-6)
+getFullYear()			Get the four digit year (yyyy)
+getHours()				Get the hour (0-23)
+getMilliseconds()		Get the milliseconds (0-999)
+getMinutes()			Get the minutes (0-59)
+getMonth()				Get the month (0-11)
+getSeconds()			Get the seconds (0-59)
+getTime()				Get the time (milliseconds since January 1, 1970)
+
+Number("string");		Konvertiert einen String in eine Zahl, wenn dies nicht möglich ist, ist der Wert NAN
+Number(false)			->gibt 0 zurück
+Number(true)			->gibt 1 zurück
+
+parseFloat()	Parses a string and returns a floating point number
+parseInt()	Parses a string and returns an integer
+
+
+Original			Converted		Converted			Converted
+Value				to Number		to String			to Boolean
+false				0				"false"				false	
+true				1				"true"				true	
+0					0				"0"					false	
+1					1				"1"					true	
+"0"					0				"0"					true	
+"000"				0				"000"				true	
+"1"					1				"1"					true	
+NaN					NaN				"NaN"				false	
+Infinity			Infinity		"Infinity"			true	
+-Infinity			-Infinity		"-Infinity"			true	
+""					0				""					false	
+"20"				20				"20"				true	
+"twenty"			NaN				"twenty"			true	
+[ ]					0				""					true	
+[20]				20				"20"				true	
+[10,20]				NaN				"10,20"				true	
+["twenty"]			NaN				"twenty"			true	
+["ten","twenty"]	NaN				"ten,twenty"		true	
+function(){}		NaN				"function(){}"		true	
+{ }					NaN				"[object Object]"	true	
+null				0				"null"				false	
+undefined			NaN				"undefined"			false
+
+
+
+----------------------------------------Bitweise Operatoren--------------------------------------------
+
+Operator		Name					Description
+&				AND						Setzt jedes Bit auf 1, wenn beide 1 sind
+|				OR						Setzt jedes Bit auf 1, wenn eins von beiden 1 ist
+^				XOR						Setzt jedes Bit auf 1, wenn nur eins von beiden 1 ist
+~				NOT						Invertiert alle Bits 1->0 0->1
+<<				Zero fill left shift	Verschiebt sich nach links, indem Nullen von rechts hineingedrückt werden und die am weitesten links liegenden Bits abfallen
+>>				Signed right shift		Verschiebt sich nach rechts, indem Kopien des am weitesten links liegenden Bits von links hineingeschoben werden und die am weitesten rechts liegenden Bits abfallen
+>>>				Zero fill right shift	Verschiebt sich nach rechts, indem Nullen von links hineingedrückt werden, und lässt die Bits ganz rechts abfallen
+
+
+
+>>>>>>>Beispiele<<<<<
+Operation			Result		Same as				Result
+5 & 1				1			0101 & 0001	 		0001
+5 | 1				5			0101 | 0001	 		0101
+~ 5					10			~0101	 			1010
+5 << 1				10			0101 << 1	 		1010
+5 ^ 1				4			0101 ^ 0001	 		0100
+5 >> 1				2			0101 >> 1	 		0010
+5 >>> 1				2			0101 >>> 1	 		0010
+
+
+----------------------------------------String-Methoden--------------------------------------------
+----------------------------------------String-Methoden--------------------------------------------
+----------------------------------------String-Methoden--------------------------------------------
+----------------------------------------String-Methoden--------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+onchange		An HTML element has been changed
+onclick			The user clicks an HTML element
+onmouseover		The user moves the mouse over an HTML element
+onmouseout		The user moves the mouse away from an HTML element
+onkeydown		The user pushes a keyboard key
+onload			The browser has finished loading the page
+
+
+Event					Description	Belongs To
+abort					The event occurs when the loading of a media is aborted	UiEvent, Event
+afterprint				The event occurs when a page has started printing, or if the print dialogue box has been closed	Event
+animationend			The event occurs when a CSS animation has completed	AnimationEvent
+animationiteration		The event occurs when a CSS animation is repeated	AnimationEvent
+animationstart			The event occurs when a CSS animation has started	AnimationEvent
+beforeprint				The event occurs when a page is about to be printed	Event
+beforeunload			The event occurs before the document is about to be unloaded	UiEvent, Event
+blur					The event occurs when an element loses focus	FocusEvent
+canplay					The event occurs when the browser can start playing the media (when it has buffered enough to begin)	Event
+canplaythrough			The event occurs when the browser can play through the media without stopping for buffering	Event
+change					The event occurs when the content of a form element, the selection, or the checked state have changed (for <input>, <select>, and <textarea>)	Event
+click					The event occurs when the user clicks on an element	MouseEvent
+contextmenu				The event occurs when the user right-clicks on an element to open a context menu	MouseEvent
+copy					The event occurs when the user copies the content of an element	ClipboardEvent
+cut						The event occurs when the user cuts the content of an element	ClipboardEvent
+dblclick				The event occurs when the user double-clicks on an element	MouseEvent
+drag					The event occurs when an element is being dragged	DragEvent
+dragend					The event occurs when the user has finished dragging an element	DragEvent
+dragenter				The event occurs when the dragged element enters the drop target	DragEvent
+dragleave				The event occurs when the dragged element leaves the drop target	DragEvent
+dragover				The event occurs when the dragged element is over the drop target	DragEvent
+dragstart				The event occurs when the user starts to drag an element	DragEvent
+drop					The event occurs when the dragged element is dropped on the drop target	DragEvent
+durationchange			The event occurs when the duration of the media is changed	Event
+ended					The event occurs when the media has reach the end (useful for messages like "thanks for listening")	Event
+error					The event occurs when an error occurs while loading an external file	ProgressEvent, UiEvent, Event
+focus					The event occurs when an element gets focus	FocusEvent
+focusin					The event occurs when an element is about to get focus	FocusEvent
+focusout				The event occurs when an element is about to lose focus	FocusEvent
+fullscreenchange		The event occurs when an element is displayed in fullscreen mode	Event
+fullscreenerror			The event occurs when an element can not be displayed in fullscreen mode	Event
+hashchange				The event occurs when there has been changes to the anchor part of a URL	HashChangeEvent
+input					The event occurs when an element gets user input	InputEvent, Event
+invalid					The event occurs when an element is invalid	Event
+keydown					The event occurs when the user is pressing a key	KeyboardEvent
+keypress				The event occurs when the user presses a key	KeyboardEvent
+keyup					The event occurs when the user releases a key	KeyboardEvent
+load					The event occurs when an object has loaded	UiEvent, Event
+loadeddata				The event occurs when media data is loaded	Event
+loadedmetadata			The event occurs when meta data (like dimensions and duration) are loaded	Event
+loadstart				The event occurs when the browser starts looking for the specified media	ProgressEvent
+message					The event occurs when a message is received through the event source	Event
+mousedown	The event occurs when the user presses a mouse button over an element	MouseEvent
+mouseenter	The event occurs when the pointer is moved onto an element	MouseEvent
+mouseleave	The event occurs when the pointer is moved out of an element	MouseEvent
+mousemove	The event occurs when the pointer is moving while it is over an element	MouseEvent
+mouseover	The event occurs when the pointer is moved onto an element, or onto one of its children	MouseEvent
+mouseout	The event occurs when a user moves the mouse pointer out of an element, or out of one of its children	MouseEvent
+mouseup	The event occurs when a user releases a mouse button over an element	MouseEvent
+mousewheel	Deprecated. Use the wheel event instead	WheelEvent
+offline	The event occurs when the browser starts to work offline	Event
+online	The event occurs when the browser starts to work online	Event
+open	The event occurs when a connection with the event source is opened	Event
+pagehide	The event occurs when the user navigates away from a webpage	PageTransitionEvent
+pageshow	The event occurs when the user navigates to a webpage	PageTransitionEvent
+paste	The event occurs when the user pastes some content in an element	ClipboardEvent
+pause	The event occurs when the media is paused either by the user or programmatically	Event
+play	The event occurs when the media has been started or is no longer paused	Event
+playing	The event occurs when the media is playing after having been paused or stopped for buffering	Event
+popstate	The event occurs when the window's history changes	PopStateEvent
+progress	The event occurs when the browser is in the process of getting the media data (downloading the media)	Event
+ratechange	The event occurs when the playing speed of the media is changed	Event
+resize	The event occurs when the document view is resized	UiEvent, Event
+reset	The event occurs when a form is reset	Event
+scroll	The event occurs when an element's scrollbar is being scrolled	UiEvent, Event
+search	The event occurs when the user writes something in a search field (for <input="search">)	Event
+seeked	The event occurs when the user is finished moving/skipping to a new position in the media	Event
+seeking	The event occurs when the user starts moving/skipping to a new position in the media	Event
+select	The event occurs after the user selects some text (for <input> and <textarea>)	UiEvent, Event
+show	The event occurs when a <menu> element is shown as a context menu	Event
+stalled	The event occurs when the browser is trying to get media data, but data is not available	Event
+storage	The event occurs when a Web Storage area is updated	StorageEvent
+submit	The event occurs when a form is submitted	Event
+suspend	The event occurs when the browser is intentionally not getting media data	Event
+timeupdate	The event occurs when the playing position has changed (like when the user fast forwards to a different point in the media)	Event
+toggle	The event occurs when the user opens or closes the <details> element	Event
+touchcancel	The event occurs when the touch is interrupted	TouchEvent
+touchend	The event occurs when a finger is removed from a touch screen	TouchEvent
+touchmove	The event occurs when a finger is dragged across the screen	TouchEvent
+touchstart	The event occurs when a finger is placed on a touch screen	TouchEvent
+transitionend	The event occurs when a CSS transition has completed	TransitionEvent
+unload	The event occurs once a page has unloaded (for <body>)	UiEvent, Event
+volumechange	The event occurs when the volume of the media has changed (includes setting the volume to "mute")	Event
+waiting	The event occurs when the media has paused but is expected to resume (like when the media pauses to buffer more data)	Event
+wheel	The event occurs when the mouse wheel rolls up or down over an element	WheelEvent
+
+HTML DOM Event Properties and Methods
+Property/Method	Description	Belongs To
+altKey	Returns whether the "ALT" key was pressed when the mouse event was triggered	MouseEvent
+altKey	Returns whether the "ALT" key was pressed when the key event was triggered	KeyboardEvent, TouchEvent
+animationName	Returns the name of the animation	AnimationEvent
+bubbles	Returns whether or not a specific event is a bubbling event	Event
+button	Returns which mouse button was pressed when the mouse event was triggered	MouseEvent
+buttons	Returns which mouse buttons were pressed when the mouse event was triggered	MouseEvent
+cancelable	Returns whether or not an event can have its default action prevented	Event
+charCode	Returns the Unicode character code of the key that triggered the onkeypress event	KeyboardEvent
+changeTouches	Returns a list of all the touch objects whose state changed between the previous touch and this touch	TouchEvent
+clientX	Returns the horizontal coordinate of the mouse pointer, relative to the current window, when the mouse event was triggered	MouseEvent, TouchEvent
+clientY	Returns the vertical coordinate of the mouse pointer, relative to the current window, when the mouse event was triggered	MouseEvent, TouchEvent
+clipboardData	Returns an object containing the data affected by the clipboard operation	ClipboardData
+code	Returns the code of the key that triggered the event	KeyboardEvent
+composed	Returns whether the event is composed or not	Event
+createEvent()	Creates a new event	Event
+ctrlKey	Returns whether the "CTRL" key was pressed when the mouse event was triggered	MouseEvent
+ctrlKey	Returns whether the "CTRL" key was pressed when the key event was triggered	KeyboardEvent, TouchEvent
+currentTarget	Returns the element whose event listeners triggered the event	Event
+data	Returns the inserted characters	InputEvent
+dataTransfer	Returns an object containing the data being dragged/dropped, or inserted/deleted	DragEvent, InputEvent
+defaultPrevented	Returns whether or not the preventDefault() method was called for the event	Event
+deltaX	Returns the horizontal scroll amount of a mouse wheel (x-axis)	WheelEvent
+deltaY	Returns the vertical scroll amount of a mouse wheel (y-axis)	WheelEvent
+deltaZ	Returns the scroll amount of a mouse wheel for the z-axis	WheelEvent
+deltaMode	Returns a number that represents the unit of measurements for delta values (pixels, lines or pages)	WheelEvent
+detail	Returns a number that indicates how many times the mouse was clicked	UiEvent
+elapsedTime	Returns the number of seconds an animation has been running	AnimationEvent
+elapsedTime	Returns the number of seconds a transition has been running	 
+eventPhase	Returns which phase of the event flow is currently being evaluated	Event
+getTargetRanges()	Returns an array containing target ranges that will be affected by the insertion/deletion	InputEvent
+getModifierState()	Returns an array containing target ranges that will be affected by the insertion/deletion	MouseEvent
+inputType	Returns the type of the change (i.e "inserting" or "deleting")	InputEvent
+isComposing	Returns whether the state of the event is composing or not	InputEvent, KeyboardEvent
+isTrusted	Returns whether or not an event is trusted	Event
+key	Returns the key value of the key represented by the event	KeyboardEvent
+key	Returns the key of the changed storage item	StorageEvent
+keyCode	Returns the Unicode character code of the key that triggered the onkeypress event, or the Unicode key code of the key that triggered the onkeydown or onkeyup event	KeyboardEvent
+location	Returns the location of a key on the keyboard or device	KeyboardEvent
+lengthComputable	Returns whether the length of the progress can be computable or not	ProgressEvent
+loaded	Returns how much work has been loaded	ProgressEvent
+metaKey	Returns whether the "META" key was pressed when an event was triggered	MouseEvent
+metaKey	Returns whether the "meta" key was pressed when the key event was triggered	KeyboardEvent, TouchEvent
+MovementX	Returns the horizontal coordinate of the mouse pointer relative to the position of the last mousemove event	MouseEvent
+MovementY	Returns the vertical coordinate of the mouse pointer relative to the position of the last mousemove event	MouseEvent
+newValue	Returns the new value of the changed storage item	StorageEvent
+newURL	Returns the URL of the document, after the hash has been changed	HasChangeEvent
+offsetX	Returns the horizontal coordinate of the mouse pointer relative to the position of the edge of the target element	MouseEvent
+offsetY	Returns the vertical coordinate of the mouse pointer relative to the position of the edge of the target element	MouseEvent
+oldValue	Returns the old value of the changed storage item	StorageEvent
+oldURL	Returns the URL of the document, before the hash was changed	HasChangeEvent
+onemptied	The event occurs when something bad happens and the media file is suddenly unavailable (like unexpectedly disconnects)	 
+pageX	Returns the horizontal coordinate of the mouse pointer, relative to the document, when the mouse event was triggered	MouseEvent
+pageY	Returns the vertical coordinate of the mouse pointer, relative to the document, when the mouse event was triggered	MouseEvent
+persisted	Returns whether the webpage was cached by the browser	PageTransitionEvent
+preventDefault()	Cancels the event if it is cancelable, meaning that the default action that belongs to the event will not occur	Event
+propertyName	Returns the name of the CSS property associated with the animation or transition	AnimationEvent, TransitionEvent
+pseudoElement	Returns the name of the pseudo-element of the animation or transition	AnimationEvent, TransitionEvent
+region		MouseEvent
+relatedTarget	Returns the element related to the element that triggered the mouse event	MouseEvent
+relatedTarget	Returns the element related to the element that triggered the event	FocusEvent
+repeat	Returns whether a key is being hold down repeatedly, or not	KeyboardEvent
+screenX	Returns the horizontal coordinate of the mouse pointer, relative to the screen, when an event was triggered	MouseEvent
+screenY	Returns the vertical coordinate of the mouse pointer, relative to the screen, when an event was triggered	MouseEvent
+shiftKey	Returns whether the "SHIFT" key was pressed when an event was triggered	MouseEvent
+shiftKey	Returns whether the "SHIFT" key was pressed when the key event was triggered	KeyboardEvent, TouchEvent
+state	Returns an object containing a copy of the history entries	PopStateEvent
+stopImmediatePropagation()	Prevents other listeners of the same event from being called	Event
+stopPropagation()	Prevents further propagation of an event during event flow	Event
+storageArea	Returns an object representing the affected storage object	StorageEvent
+target	Returns the element that triggered the event	Event
+targetTouches	Returns a list of all the touch objects that are in contact with the surface and where the touchstart event occured on the same target element as the current target element	TouchEvent
+timeStamp	Returns the time (in milliseconds relative to the epoch) at which the event was created	Event
+total	Returns the total amount of work that will be loaded	ProgressEvent
+touches	Returns a list of all the touch objects that are currently in contact with the surface	TouchEvent
+transitionend	The event occurs when a CSS transition has completed	TransitionEvent
+type	Returns the name of the event	Event
+url	Returns the URL of the changed item's document	StorageEvent
+which	Returns which mouse button was pressed when the mouse event was triggered	MouseEvent
+which	Returns the Unicode character code of the key that triggered the onkeypress event, or the Unicode key code of the key that triggered the onkeydown or onkeyup event	KeyboardEvent
+view	Returns a reference to the Window object where the event occurred	UiEvent
