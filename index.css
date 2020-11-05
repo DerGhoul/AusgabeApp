@@ -34,7 +34,6 @@ body{
 
 
 div{
-	float: right;
 	border-style: groove;
 	background-color: #606060;
 	width: 180px;
@@ -44,7 +43,6 @@ div{
 }
 
 .divb{
-	float: right;
 	border-style: groove;
 	background-color: #363636;
 	width: 180px;
@@ -52,7 +50,6 @@ div{
 }
 
 /*.diva{
-	float: right;
 	border-style: groove;
 	background-color: #606060;
 	width: 180px;
@@ -81,7 +78,6 @@ img{
 }
 
 .check{
-	float: left;
 	width: 40px;
 	
 }
@@ -98,7 +94,15 @@ img{
 }
 
 
-
+.firstFloater{
+	float: right;
+}
+.secondFloater{
+	float: right;
+}
+.thirdFloater{
+	float: right;
+}
 
 
 

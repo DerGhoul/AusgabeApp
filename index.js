@@ -17,7 +17,7 @@ const createWindow = () => {
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
   // Open the DevTools.
-  //mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
@@ -223,47 +223,55 @@ function gelduebertragen(ev ,sender){
 
 
 function geldeinbringen(ev,sender){
-	var betragstring = prompt("Bitte höhe des Betrags angeben");
-	var betrag = betragstring;
-	var senderID = document.getElementById(sender.id);
-	var senderValue = sender.value;
-	var outputId = getOutputId(geldId);
-	var inputId = sender.id;
-	geldabziehen(inputId,outputId,betrag);
-
-
+	//var betragstring = document.getElementById("uebertrag");
+	//var betrag = betragstring;
+	//var senderID = document.getElementById(sender.id);
+	//geldabziehen(inputId,outputId,betrag);
 	//senderID.value = betrag;
-	//console.log(outputId);
-	//console.log(senderValue);
-	//console.log(sender.id);
-	//console.log(betrag);
-	//console.log(geldId);
+	
+	var outputId = getOutputId(geldId);
+	var inputId = sender.id;	
+	
+	
+
+	var senderValue = sender.value;
+	
+	console.log("Dem ich geld übertrage "+outputId);
+	console.log("Der Geld überträgt Geldbetrag "+senderValue);
+	console.log("Der Geld überträgt "+sender.id);
+	console.log("Die Id des Symbols dem dem ich geld übertrage "+geldId);
+	
+	geldabziehen(inputId,outputId);
 }
 
 function allowDrop(ev,sender){
 	ev.preventDefault();
 
 }
-
-function geldabziehen(inputId,outputId,betragstring){
+//function geldabziehen(inputId,outputId,betragstring)
+function geldabziehen(inputId,outputId){
 
 
 	var input =  document.getElementById(inputId);
 	var output = document.getElementById(outputId);
-	var inputValue = parseFloat(input.value);
-	var outputValue = parseFloat(output.value);
-	var betrag = parseFloat(betragstring);
+	var betragId = document.getElementById("betrag");
+	const betrag = Number(betragId.value);
+	let inputValue = Number(input.value);
+	let outputValue = Number(output.value);
+	
+	console.log("BetragId " + betragId);
+	console.log("Betrag " + betrag);
+	console.log("Vorher da "+inputValue);
+	console.log("Vorher da "+outputValue);
 
 	inputValue  += betrag;
 	outputValue -= betrag;
 
-	var a = zuBetrag(betragstring);
-	console.log(a);
-
-
-	//console.log(betrag);
-	//console.log(inputValue);
-	//console.log(outputValue);
+	//var a = zuBetrag(betrag);
+	
+	
+	console.log("Nachher da " + inputValue);
+	console.log("Nachher da " + outputValue);
 
 	document.getElementById(inputId).value = inputValue.toFixed(2);
 	document.getElementById(outputId).value = outputValue.toFixed(2);
@@ -322,7 +330,7 @@ function getOutputId(geldId){
 
 
 	if(geldId == "notwendiggeld"){
-		outputId = "notw";
+		outputId = "notwendigkeiten";
 	}
 	if(geldId == "bildunggeld"){
 		outputId = "bildung";
@@ -331,10 +339,10 @@ function getOutputId(geldId){
 		outputId = "spass";
 	}
 	if(geldId == "sparengeld"){
-		outputId = "spar";
+		outputId = "sparen";
 	}
 	if(geldId == "ruecklagengeld"){
-		outputId = "rueck";
+		outputId = "ruecklagen";
 	}
 	if(geldId == "investmentgeld"){
 		outputId = "invest";
