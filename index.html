@@ -13,7 +13,7 @@
 
 
 
-<div ><!--Hier wird der Lohn implementiert-->
+<div id="lohnDiv" ><!--Hier wird der Lohn implementiert-->
 	<label>Lohn</label><br>
 	<input
 		type="number"
@@ -21,8 +21,8 @@
 		id="lohn"
 		value="500"
 		onchange="umverteilung()" >
-</div><br>
-<div ><!--Hier wird der Übertrag implementiert-->
+</div>
+<div id="betragDiv" ><!--Hier wird der Übertrag implementiert-->
 	<label>Uebertrag</label><br>
 	<input
 		type="number"
@@ -39,7 +39,7 @@
 
 
 
-	<div><!--Hier wird die "Notwendig" implementiert-->
+	<div id="firstDiv" ><!--Hier wird die "Notwendig" implementiert-->
 		<label>Notwendigkeiten</label><br>
 			<input 	type="number"
 					name="Notwendigkeiten"
@@ -51,7 +51,7 @@
 					ondragover="allowDrop(event,this)"><br>
 
 
-		<div class="divc">
+		<div class="divc" >
 			<input 	type="checkbox"
 					class="check"
 					id="notwendigkeitChecked"
@@ -67,7 +67,7 @@
 	</div>
 
 
-	<div class="firstFloater"  ><!--Hier wird die "Bildung" implementiert-->
+	<div id="secondDiv" ><!--Hier wird die "Bildung" implementiert-->
 		<label>Bildung</label><br>
 			<input 	type="number"
 					name="Bildung"
@@ -95,7 +95,7 @@
 	</div>
 
 
-	<div ><!--Hier wird die "Spass" implementiert-->
+	<div id="thirdDiv"  ><!--Hier wird die "Spass" implementiert-->
 		<label>Spass</label><br>
 			<input 	type="number"
 					name="Spass"
@@ -122,7 +122,7 @@
 	</div>
 
 
-	<div class="secondFloater"  ><!--Hier wird die "Sparen" implementiert-->
+	<div id="fourthDiv"   ><!--Hier wird die "Sparen" implementiert-->
 		<label>Sparen</label><br>
 			<input type="number"
 					name="Sparen"
@@ -150,7 +150,7 @@
 	</div>
 
 
-	<div ><!--Hier wird die "Ruecklagen" implementiert-->
+	<div id="fifthDiv"  ><!--Hier wird die "Ruecklagen" implementiert-->
 		<label>Ruecklagen</label><br>
 			<input 	type="number"
 					name="Ruecklagen"
@@ -178,7 +178,7 @@
 	</div>
 
 
-	<div class="thirdFloater"  ><!--Hier wird die "Investment" implementiert-->
+	<div id="sixthDiv"  ><!--Hier wird die "Investment" implementiert-->
 		<label>Investment</label><br>
 			<input 	type="number"
 					name="Investment"
@@ -201,7 +201,8 @@
 			<img 	id="invesmentgeld"
 					src="geldschein.png"
 					draggable="true"
-					ondragstart="gelduebertragen(event,this)" ></img>
+					ondragstart="gelduebertragen(event,this)" >
+			</img>
 		</div>
 	</div>
 	
