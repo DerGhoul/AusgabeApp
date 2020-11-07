@@ -1,5 +1,6 @@
 const { app, BrowserWindow } = require('electron');
 const path = require('path');
+const fs = require('fs');
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
@@ -9,7 +10,7 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
+    width: 440,
     height: 600,
   });
 
@@ -17,7 +18,7 @@ const createWindow = () => {
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
 
   // Open the DevTools.
-  mainWindow.webContents.openDevTools();
+  //mainWindow.webContents.openDevTools();
 };
 
 // This method will be called when Electron has finished
@@ -41,6 +42,22 @@ app.on('activate', () => {
     createWindow();
   }
 });
+
+fs.writeFile('asdf.txt','Hallo Welt', function (err){
+  if (err) throw err;
+  console.log('Saved!');
+});
+
+
+
+
+
+
+
+
+
+
+
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
@@ -228,19 +245,19 @@ function geldeinbringen(ev,sender){
 	//var senderID = document.getElementById(sender.id);
 	//geldabziehen(inputId,outputId,betrag);
 	//senderID.value = betrag;
-	
+
 	var outputId = getOutputId(geldId);
-	var inputId = sender.id;	
-	
-	
+	var inputId = sender.id;
+
+
 
 	var senderValue = sender.value;
-	
+
 	console.log("Dem ich geld übertrage "+outputId);
 	console.log("Der Geld überträgt Geldbetrag "+senderValue);
 	console.log("Der Geld überträgt "+sender.id);
 	console.log("Die Id des Symbols dem dem ich geld übertrage "+geldId);
-	
+
 	geldabziehen(inputId,outputId);
 }
 
@@ -258,7 +275,7 @@ function geldabziehen(inputId,outputId){
 	const betrag = Number(betragId.value);
 	let inputValue = Number(input.value);
 	let outputValue = Number(output.value);
-	
+
 	console.log("BetragId " + betragId);
 	console.log("Betrag " + betrag);
 	console.log("Vorher da "+inputValue);
@@ -268,8 +285,8 @@ function geldabziehen(inputId,outputId){
 	outputValue -= betrag;
 
 	//var a = zuBetrag(betrag);
-	
-	
+
+
 	console.log("Nachher da " + inputValue);
 	console.log("Nachher da " + outputValue);
 
