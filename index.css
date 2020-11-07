@@ -1,109 +1,90 @@
 button{
-	background-color: #363636;
+	background-color: #222;
 
 
+	color: #2d753f;
+	margin-left: 2rem;
+	margin-top: 1rem;
 }
 input{
 	background-color:#363636;
-	
-    color: #2d753f;
-    
-	
-	
+	width: 165px;
+	color: #2d753f;
+	border-color: #121212;
+
 }
-.parameter{
+.container{
+	display: grid;
+	grid-template-columns: 180px 180px;
+	grid-template-rows: 100px 100px 100px;
+	border-style: none;
+	grid-gap: 5px;
+}
+
+.container2{
+	display: grid;
+	grid-template-columns: 180px;
+	grid-template-rows: 30px 30px 30px 30px;
+	width: 175px;
+	grid-gap: 2px;
+	margin-top: 2px;
 }
 
 body{
-	background-color: #363636;
-	
+	background-color: #222;
+	width: 365;
+
 }
 
 
 div{
-	
-	background-color: #606060;
+
 	border-style: outset;
-	border-color: #424242;
-	border-bottom-color: #454545;
-	
+	border-color: #020101e6;
+	border-top-color: #454545;
+	border-left-color: #454545;
+
+	float: left;
 }
 
-.divb{
-	
-	background-color: #363636;
-	
-}
 
 label{
 	text-align: center;
 	font-family: Calibri, auto;
 	font-size: large;
+	color: darkgray;
 }
 
 p{
 	color: red;
+	font-size: small;
+	float: right;
+	align-content: left;
 }
 
 
 img{
-	
 	width: 25px;
 	height: 25px;
-	border: double;
-	margin-left:50px;
-	margin-right:40px;
+	border: outset;
+	background-color: darkgreen; 
+	
 }
 
 .check{
+	margin-top: 7px;
+	margin-left: 10px;
+	margin-right: 20px;
 	width: 35px;
 	height: 35px;
 }
 
-
-.divc{
-	
-	background-color: #606060;
-}
-
 #lohnDiv{
-	float:left;
+	width: 175px;
 }
+
 #betragDiv{
-	float: right;
+	width: 175px;
+	margin-left: 5px;
 }
-#firstDiv{
-	float: left;
-}
-#secondDiv{
-	float: right;
-}
-#thirdDiv{
-	float:left;
-}
-#fourthDiv{
-	float: right;
-}
-#fifthDiv{
-	float:left;
-}
-#sixthDiv{
-	/*float: right;*/
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
