@@ -10,8 +10,8 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 440,
-    height: 600,
+    width: 400,
+    height: 550,
   });
 
   // and load the index.html of the app.
@@ -43,10 +43,7 @@ app.on('activate', () => {
   }
 });
 
-fs.writeFile('asdf.txt','Hallo Welt', function (err){
-  if (err) throw err;
-  console.log('Saved!');
-});
+
 
 
 
@@ -185,10 +182,18 @@ function book(){
 	if(grund == "" || beschreibung == "" || preis == "" || datum == ""){
 		document.getElementById("hierfehltwas").innerHTML = "Bitte alle Felder belegen";
 		console.log("BaFb");
+
 	}else{
-		console.log(grund+";"+beschreibung+";"+datum+";"+preis);
+		const buchung = (grund+";"+beschreibung+";"+datum+";"+preis+"\n");
+    console.log(buchung);
 		document.getElementById("hierfehltwas").innerHTML = "";
 		disselect();
+
+    fs.writeFile('TryFile.txt',buchung, function (err) {
+      if (err) throw err;
+      console.log('Saved!');
+    });
+
 	}
 
 

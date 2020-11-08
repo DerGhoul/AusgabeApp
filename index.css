@@ -30,6 +30,22 @@ input{
 	margin-top: 2px;
 }
 
+.containering{
+	border-style: none;
+	grid-template-columns: 365px;
+	grid-template-rows: 310px;
+}
+
+.bottomcontainer{
+	border-style: none;
+	grid-template-columns: 180px 180px;
+	grid-template-rows: 180px;
+}
+
+.item_item12{
+	border-style: none;
+}
+
 body{
 	background-color: #222;
 	width: 365;
@@ -67,8 +83,8 @@ img{
 	width: 25px;
 	height: 25px;
 	border: outset;
-	background-color: darkgreen; 
-	
+	background-color: darkgreen;
+
 }
 
 .check{
@@ -81,10 +97,11 @@ img{
 
 #lohnDiv{
 	width: 175px;
+	margin-bottom: 3px;
 }
 
 #betragDiv{
-	width: 175px;
+	width: 173px;
 	margin-left: 5px;
-}
 
+}
