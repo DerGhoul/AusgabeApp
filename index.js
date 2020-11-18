@@ -2,6 +2,7 @@ const  { app, BrowserWindow } = require('electron');
 const path = require('path');
 var fs = require('fs');
 
+
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
   app.quit();
@@ -29,7 +30,7 @@ const createWindow = () => {
 app.on('ready', createWindow , () =>{
     mainWindow = new BrowserWindow({
         webPreferences: {
-          nodeIntegration: true
+          nodeIntegration: true,
         }
     });
 });
@@ -71,7 +72,9 @@ app.on('activate', () => {
 
 //Globale Variable für Drag and Drop aktion
 var geldId ="";
+//var monatsAnzahl = 0;
 
+//Mit dem Start aufgerufene Methoden
 
 
 //Methoden
@@ -104,7 +107,7 @@ function toGrund(sender){
 
 }
 
-
+///Zieht den Wert ab, von dem input, der als Grund angegeben wurde
 function verrechnen(value){
 	//console.log(value);
 	var grund = document.getElementById("grund").value;
@@ -139,10 +142,7 @@ function datumsformatierung(date){
 	return(datum);
 }
 
-
-
-
-
+///Wählt alle checkbuttons ab
 function disselect(){
 	var check = document.getElementsByClassName("check");
 	for(var i = 0;i<check.length;i++){
@@ -154,8 +154,7 @@ function disselect(){
 
 }
 
-
-
+///Gibt zurück, welcher checkbutton ausgewählt wurde
 function wichIsSelected(){
 	var check = document.getElementsByClassName("check");
 	//var alarm = document.getElementById("hierfehltwas").innerHTML;
@@ -168,7 +167,7 @@ function wichIsSelected(){
 	}
 }
 
-///Noch nicht definiert
+///Bucht den AusgabeString auf Konsole, bzw in Datei
 function book(){
 
 
@@ -207,6 +206,7 @@ function book(){
 
 }
 
+///Gibt ein für das inputTextfeld lesbares Datumsformat zurück
 function dater(){
 	var dateTime = new Date();
 	var day = dateTime.getDate();
@@ -214,12 +214,15 @@ function dater(){
 	if (month.length == 1) {
 		month = ("0"+month);
 	}
+	if (day.length == 1) {
+		month = ("0"+day);
+	}
 	var year = dateTime.getFullYear();
 	var value = (year+"-"+month+"-"+day);
 	document.getElementById("date").value = value;
 }
 
-
+///Verteilt lohn auf die inputTextfelder auf
 function umverteilung(){
 	var lohn = document.getElementById("lohn");
 	var notw = document.getElementById("notwendigkeiten");
@@ -240,14 +243,14 @@ function umverteilung(){
 
 }
 
-
+///Standard OndragOver Funktion
 function gelduebertragen(ev ,sender){
 	ev.dataTransfer.setData("",sender.id);
 	//console.log(sender.id);
 	geldId = sender.id;
 }
 
-
+///Standard Ondrop Funktion
 function geldeinbringen(ev,sender){
 	//var betragstring = document.getElementById("uebertrag");
 	//var betrag = betragstring;
@@ -270,11 +273,13 @@ function geldeinbringen(ev,sender){
 	geldabziehen(inputId,outputId);
 }
 
+///Standard allowDrop Funktion
 function allowDrop(ev,sender){
 	ev.preventDefault();
 
 }
-//function geldabziehen(inputId,outputId,betragstring)
+
+///Dient zum übertragen von Geld bei der Drag-Drop-Aktion
 function geldabziehen(inputId,outputId){
 
 
@@ -350,51 +355,126 @@ function zuBetrag(betrag){
 }
 
 
-
+///liefert zu einem geldsymbol die id des betraginputs
 function getOutputId(geldId){
 	var outputId;
 
-
+	//notwendiggeld
 	if(geldId == "notwendiggeld"){
 		outputId = "notwendigkeiten";
 	}
+	//bildunggeld
 	if(geldId == "bildunggeld"){
 		outputId = "bildung";
 	}
+	//spassgeld
 	if(geldId == "spassgeld"){
 		outputId = "spass";
 	}
+	//sparengeld
 	if(geldId == "sparengeld"){
 		outputId = "sparen";
 	}
+	//ruecklagengeld
 	if(geldId == "ruecklagengeld"){
 		outputId = "ruecklagen";
 	}
+	//investmentgeld
 	if(geldId == "investmentgeld"){
 		outputId = "invest";
 	}
 
-	return(outputId);
+	return(outputId);	
+}
+
+
+///selects the month to a label and changes color
+function monthSelecting(sender){
+	var monatsAnzahl = document.getElementById("monatsAnzahlLabel");
+	var anzahl = monatsAnzahl.innerText.length;
+	var zahleingabe = parseInt(monatsAnzahl.innerText[anzahl-1]);
+	console.log(zahleingabe);
+	console.log(monatsAnzahl.innerText);
+
+
+	var senderID = sender.id;
+	var senderIdentification = document.getElementById(senderID);
+	if(senderIdentification.style.backgroundColor == "darkgrey"){
+		senderIdentification.style.backgroundColor = "#222";
+		zahleingabe --;
+	}
+	else{
+		senderIdentification.style.backgroundColor = "darkgrey";
+		zahleingabe ++;
+		
+	}
+	monatsAnzahl.innerText = ("Anzahl: " + zahleingabe);
+		console.log(zahleingabe);
+		
+}
 
 
 
 
-	//notwendiggeld
-	//bildunggeld
-	//spassgeld
-	//sparengeld
-	//ruecklagengeld
-	//investmentgeld
+///writes the momentan month in the innerHTML and the rest with following months
+function monthScribing(){
+	var date = new Date();
+	var monthIndex = date.getMonth();
+	//console.log(monthIndex);
+	//console.log(date);
+	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December",
+					"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	
+	
+	let firstMonth = 	document.getElementById("firstMonth");
+	let secondMonth = 	document.getElementById("secondMonth");
+	let thirdMonth = 	document.getElementById("thirdMonth");
+	let fourthMonth = 	document.getElementById("fourthMonth");
+	let fifthMonth = 	document.getElementById("fifthMonth");
+	let sixthMonth = 	document.getElementById("sixthMonth");
+	
+	firstMonth.innerText = (months[monthIndex]);
+	secondMonth.innerText = (months[monthIndex+1]);
+	thirdMonth.innerText = (months[monthIndex+2]);
+	fourthMonth.innerText = (months[monthIndex+3]);
+	fifthMonth.innerText = (months[monthIndex+4]);
+	sixthMonth.innerText = (months[monthIndex+5]);
 }
 
 
 
 
 
-/* TestFunktion
-function test(){
-	var check = document.getElementsByClassName("check");
-	for(var i = 0;i<check.length;i++){
-		check[i].checked = true;
-	}
-*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

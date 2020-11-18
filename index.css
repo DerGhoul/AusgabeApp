@@ -6,6 +6,22 @@ button{
 	margin-left: 2rem;
 	margin-top: 1rem;
 }
+
+.monthButton{
+	
+	background-color: #222;
+	color: #2d753f;
+	margin-left: 2rem;
+}
+
+.monthLabel{
+	margin-left: 2rem;
+	text-align: center;
+	font-family: Calibri, auto;
+	font-size: large;
+	color: darkgray;
+}
+
 input{
 	background-color:#363636;
 	width: 165px;
@@ -13,12 +29,28 @@ input{
 	border-color: #121212;
 
 }
+.bodycontainer{
+	display: grid;
+	grid-template-columns: 360px 180px;
+	grid-template-rows: 310px;
+	border-style: none;
+	grid-gap: 5px;
+}
+
 .container{
 	display: grid;
 	grid-template-columns: 180px 180px;
 	grid-template-rows: 100px 100px 100px;
 	border-style: none;
 	grid-gap: 5px;
+}
+
+.monthcontainer{
+	display: grid;	
+	grid-template-columns: 180px; 
+	grid-template-rows: 30px 45px 45px 45px 45px 45px 45px;
+	border-style: inherit;
+	grid-gap: 0px;
 }
 
 .container2{
@@ -32,7 +64,7 @@ input{
 
 .containering{
 	border-style: none;
-	grid-template-columns: 365px;
+	grid-template-columns: 450px;
 	grid-template-rows: 310px;
 }
 
@@ -76,8 +108,7 @@ p{
 	float: right;
 	align-content: left;
 }
-
-
+ 
 img{
 	width: 25px;
 	height: 25px;
