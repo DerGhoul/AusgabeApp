@@ -195,7 +195,7 @@
 	</div>
 
 	<div class="monthcontainer"	> 
-		<label	class="monthLabel" 	id="monatsAnzahlLabel" >Anzahl: 0</label>
+		<label	class="monthLabel" 	id="monatsAnzahlLabel" >Anzahl: 1</label>
 		<button class="monthButton" id="firstMonth"  onclick="monthSelecting(this)" >	</button> 
 		<button class="monthButton" id="secondMonth" onclick="monthSelecting(this)" >	</button>
 		<button class="monthButton" id="thirdMonth"  onclick="monthSelecting(this)" >	</button>
@@ -244,12 +244,12 @@
 				var year = dateTime.getFullYear();
 				var value = (year+"-"+month+"-"+day);
 				document.getElementById("date").value = value;
-				
+				/*
 				try{
 					umverteilung();
 				}catch(e){
 					console.log(e);
-				}
+				}*/
 				try{
 				monthScribing();
 				}catch(e){

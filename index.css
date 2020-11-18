@@ -1,21 +1,18 @@
 button{
-	background-color: #222;
-
-
+	background-color: #444;
 	color: #2d753f;
 	margin-left: 2rem;
 	margin-top: 1rem;
 }
 
 .monthButton{
-	
-	background-color: #222;
+	background-color: #444;
 	color: #2d753f;
-	margin-left: 2rem;
+	margin-left: 1rem;
 }
 
 .monthLabel{
-	margin-left: 2rem;
+	margin-left: 1rem;
 	text-align: center;
 	font-family: Calibri, auto;
 	font-size: large;
@@ -47,7 +44,7 @@ input{
 
 .monthcontainer{
 	display: grid;	
-	grid-template-columns: 180px; 
+	grid-template-columns: 150px; 
 	grid-template-rows: 30px 45px 45px 45px 45px 45px 45px;
 	border-style: inherit;
 	grid-gap: 0px;

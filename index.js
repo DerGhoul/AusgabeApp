@@ -240,6 +240,8 @@ function umverteilung(){
 	ruec.value = (0.1 * value).toFixed(2);
 	inve.value = (0.1 * value).toFixed(2);
 	notw.value = (0.5 * value).toFixed(2);
+	
+	lohn.readOnly = true;
 
 }
 
@@ -388,29 +390,42 @@ function getOutputId(geldId){
 }
 
 
-///selects the month to a label and changes color
+///selects the month to a label and changes color, auch kann der lohneingang im vorraus berechnet werden
 function monthSelecting(sender){
+	
+	var lohn = document.getElementById("lohn");
+	if(lohn.readOnly == true){
+	console.log(lohn);
 	var monatsAnzahl = document.getElementById("monatsAnzahlLabel");
 	var anzahl = monatsAnzahl.innerText.length;
 	var zahleingabe = parseInt(monatsAnzahl.innerText[anzahl-1]);
 	console.log(zahleingabe);
 	console.log(monatsAnzahl.innerText);
-
+	var grundlohn = (lohn.value/zahleingabe);
+	
 
 	var senderID = sender.id;
 	var senderIdentification = document.getElementById(senderID);
 	if(senderIdentification.style.backgroundColor == "darkgrey"){
 		senderIdentification.style.backgroundColor = "#222";
 		zahleingabe --;
+		console.log(grundlohn*zahleingabe);
+		lohn.value = grundlohn*(zahleingabe);
 	}
 	else{
 		senderIdentification.style.backgroundColor = "darkgrey";
 		zahleingabe ++;
-		
+		console.log(grundlohn*zahleingabe);
+		lohn.value = grundlohn*zahleingabe;
 	}
 	monatsAnzahl.innerText = ("Anzahl: " + zahleingabe);
-		console.log(zahleingabe);
-		
+	console.log(zahleingabe);
+	umverteilung();
+	}
+	else{
+		console.log("Der Lohn wurde noch nicht eingetragen");
+	}
+	
 }
 
 
@@ -433,12 +448,12 @@ function monthScribing(){
 	let fifthMonth = 	document.getElementById("fifthMonth");
 	let sixthMonth = 	document.getElementById("sixthMonth");
 	
-	firstMonth.innerText = (months[monthIndex]);
-	secondMonth.innerText = (months[monthIndex+1]);
-	thirdMonth.innerText = (months[monthIndex+2]);
-	fourthMonth.innerText = (months[monthIndex+3]);
-	fifthMonth.innerText = (months[monthIndex+4]);
-	sixthMonth.innerText = (months[monthIndex+5]);
+	firstMonth.innerText = (months[monthIndex+1]);
+	secondMonth.innerText = (months[monthIndex+2]);
+	thirdMonth.innerText = (months[monthIndex+3]);
+	fourthMonth.innerText = (months[monthIndex+4]);
+	fifthMonth.innerText = (months[monthIndex+5]);
+	sixthMonth.innerText = (months[monthIndex+6]);
 }
 
 
