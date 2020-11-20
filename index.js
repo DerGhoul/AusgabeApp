@@ -437,8 +437,8 @@ function monthScribing(){
 	var monthIndex = date.getMonth();
 	//console.log(monthIndex);
 	//console.log(date);
-	var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December",
-					"January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	var months = ["Jan ", "Feb ", "Mar ", "Apr ", "May ", "Jun ", "Jul ", "Aug ", "Sep ", "Oct ", "Nov ", "Dec ",
+	"Jan ", "Feb ", "Mar ", "Apr ", "May ", "Jun ", "Jul ", "Aug ", "Sep ", "Oct ", "Nov ", "Dec "];
 	
 	
 	let firstMonth = 	document.getElementById("firstMonth");
