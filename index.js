@@ -188,15 +188,14 @@ function book(){
 
 	}else{
 		const buchung = (grund+";"+beschreibung+";"+datum+";"+preis+"\n");
-    console.log(buchung);
+    	console.log(buchung);
 		document.getElementById("hierfehltwas").innerHTML = "";
 		disselect();
 
-    fs.writeFile('TryFile.txt',buchung, function (err) {
-      if (err) throw err;
-      console.log('Saved!');
-    });
-
+    	fs.appendFile('TryFile.txt',buchung, function (err) {
+     		if (err) throw err;
+	  		console.log('Content is written');
+    	});
 	}
 
 
