@@ -80,6 +80,7 @@ var geldId ="";
 //Methoden
 ///Überprüft welcher checkbox gewählt ist und
 function selectchanger(sender){
+  console.log("selectchanger");
 
 	var check = document.getElementsByClassName("check");
 	var senderId = sender.id;
@@ -102,14 +103,18 @@ function selectchanger(sender){
 
 ///Belegt den Grund input mit dem gewählten
 function toGrund(sender){
-	var senderValue = sender;
+  console.log("toGrund");
+
+  var senderValue = sender;
 	document.getElementById("grund").value = senderValue;
 
 }
 
 ///Zieht den Wert ab, von dem input, der als Grund angegeben wurde
-function verrechnen(value){
-	//console.log(value);
+function verrechnen(){
+  console.log("verrechnen");
+
+  //console.log(value);
 	var grund = document.getElementById("grund").value;
 	var verteilung = document.getElementsByClassName("geldBerechner");
 	var check = document.getElementsByClassName("check");
@@ -121,10 +126,11 @@ function verrechnen(value){
 			console.log(verteilung[i].name);
 			var geld = parseFloat(verteilung[i].value);
 			console.log(geld);
-			var abheben = parseFloat(document.getElementById("preis").value);
+			var abheben = (document.getElementById("preis").value);
 			console.log(abheben);
-			var ergebnis = geld-abheben;
+			var ergebnis = parseFloat(geld-abheben);
 			console.log(ergebnis.toFixed(2));
+
 			verteilung[i].value = ergebnis.toFixed(2);
 		}
 	}
@@ -133,6 +139,8 @@ function verrechnen(value){
 
 ///Gibt das Datum in Punktschreibweise zurück für Speicherung in Datei
 function datumsformatierung(date){
+  console.log("datumsformatierung");
+
 	var datesplitter = date.split("-");
 	var tag = datesplitter[2];
 	var monat = datesplitter[1];
@@ -144,7 +152,9 @@ function datumsformatierung(date){
 
 ///Wählt alle checkbuttons ab
 function disselect(){
-	var check = document.getElementsByClassName("check");
+  console.log("disselect");
+
+  var check = document.getElementsByClassName("check");
 	for(var i = 0;i<check.length;i++){
 	check[i].checked = false;
 	}
@@ -156,6 +166,8 @@ function disselect(){
 
 ///Gibt zurück, welcher checkbutton ausgewählt wurde
 function wichIsSelected(){
+  console.log("wichIsSelected");
+
 	var check = document.getElementsByClassName("check");
 	//var alarm = document.getElementById("hierfehltwas").innerHTML;
 
@@ -169,12 +181,12 @@ function wichIsSelected(){
 
 ///Bucht den AusgabeString auf Konsole, bzw in Datei
 function book(){
+  console.log("book");
 
 
 
-
-	var selected = wichIsSelected();
-	console.log(selected);
+	//var selected = wichIsSelected();
+	//console.log(selected);
 	//hier kommt ein Verbuchungsalgorithmus
 	var grund = document.getElementById("grund").value;
 	var beschreibung = document.getElementById("beschreibung").value;
@@ -182,7 +194,7 @@ function book(){
 	var preis = document.getElementById("preis").value;
 	var datum = datumsformatierung(date);
 
-	if(grund == "" || beschreibung == "" || preis == "" || datum == ""){
+	if(grund == "" || beschreibung == "" || preis == "" || datum == "undefined.undefined."){
 		document.getElementById("hierfehltwas").innerHTML = "Bitte alle Felder belegen";
 		console.log("BaFb");
 
@@ -190,12 +202,17 @@ function book(){
 		const buchung = (grund+";"+beschreibung+";"+datum+";"+preis+"\n");
     	console.log(buchung);
 		document.getElementById("hierfehltwas").innerHTML = "";
-		disselect();
 
+    verrechnen();//ruft das Programm auf um den Betrag beim richtigen Grund abzuziehen
+    disselect();//wählt Beschreibung und Preis ab
+
+
+
+/*
     	fs.appendFile('TryFile.txt',buchung, function (err) {
      		if (err) throw err;
 	  		console.log('Content is written');
-    	});
+    	});*/
 	}
 
 
@@ -207,7 +224,9 @@ function book(){
 
 ///Gibt ein für das inputTextfeld lesbares Datumsformat zurück
 function dater(){
-	var dateTime = new Date();
+  console.log("dater");
+
+  var dateTime = new Date();
 	var day = dateTime.getDate();
 	var month = dateTime.getMonth()+1;
 	if (month.length == 1) {
@@ -223,7 +242,9 @@ function dater(){
 
 ///Verteilt lohn auf die inputTextfelder auf
 function umverteilung(){
-	var lohn = document.getElementById("lohn");
+  console.log("umverteilung");
+
+  var lohn = document.getElementById("lohn");
 	var notw = document.getElementById("notwendigkeiten");
 	var bild = document.getElementById("bildung");
 	var spas = document.getElementById("spass");
@@ -239,21 +260,25 @@ function umverteilung(){
 	ruec.value = (0.1 * value).toFixed(2);
 	inve.value = (0.1 * value).toFixed(2);
 	notw.value = (0.5 * value).toFixed(2);
-	
+
 	lohn.readOnly = true;
 
 }
 
 ///Standard OndragOver Funktion
 function gelduebertragen(ev ,sender){
-	ev.dataTransfer.setData("",sender.id);
+  console.log("gelduebertragen");
+
+  ev.dataTransfer.setData("",sender.id);
 	//console.log(sender.id);
 	geldId = sender.id;
 }
 
 ///Standard Ondrop Funktion
 function geldeinbringen(ev,sender){
-	//var betragstring = document.getElementById("uebertrag");
+  console.log("geldeinbringen");
+
+  //var betragstring = document.getElementById("uebertrag");
 	//var betrag = betragstring;
 	//var senderID = document.getElementById(sender.id);
 	//geldabziehen(inputId,outputId,betrag);
@@ -282,7 +307,7 @@ function allowDrop(ev,sender){
 
 ///Dient zum übertragen von Geld bei der Drag-Drop-Aktion
 function geldabziehen(inputId,outputId){
-
+  console.log("geldabziehen");
 
 	var input =  document.getElementById(inputId);
 	var output = document.getElementById(outputId);
@@ -337,7 +362,9 @@ function dateiLeser(){
 
 
 function zuBetrag(betrag){
-	var betragstring = betrag.toString();
+  console.log("zuBetrag");
+
+  var betragstring = betrag.toString();
 
 	try{
 		console.log(betragstring);
@@ -358,7 +385,9 @@ function zuBetrag(betrag){
 
 ///liefert zu einem geldsymbol die id des betraginputs
 function getOutputId(geldId){
-	var outputId;
+  console.log("getOutputId");
+
+  var outputId;
 
 	//notwendiggeld
 	if(geldId == "notwendiggeld"){
@@ -385,13 +414,14 @@ function getOutputId(geldId){
 		outputId = "invest";
 	}
 
-	return(outputId);	
+	return(outputId);
 }
 
 
 ///selects the month to a label and changes color, auch kann der lohneingang im vorraus berechnet werden
 function monthSelecting(sender){
-	
+  console.log("monthSelecting");
+
 	var lohn = document.getElementById("lohn");
 	if(lohn.readOnly == true){
 	console.log(lohn);
@@ -401,7 +431,7 @@ function monthSelecting(sender){
 	console.log(zahleingabe);
 	console.log(monatsAnzahl.innerText);
 	var grundlohn = (lohn.value/zahleingabe);
-	
+
 
 	var senderID = sender.id;
 	var senderIdentification = document.getElementById(senderID);
@@ -424,7 +454,7 @@ function monthSelecting(sender){
 	else{
 		console.log("Der Lohn wurde noch nicht eingetragen");
 	}
-	
+
 }
 
 
@@ -432,21 +462,23 @@ function monthSelecting(sender){
 
 ///writes the momentan month in the innerHTML and the rest with following months
 function monthScribing(){
-	var date = new Date();
+  console.log("monthScribing");
+
+  var date = new Date();
 	var monthIndex = date.getMonth();
 	//console.log(monthIndex);
 	//console.log(date);
 	var months = ["Jan ", "Feb ", "Mar ", "Apr ", "May ", "Jun ", "Jul ", "Aug ", "Sep ", "Oct ", "Nov ", "Dec ",
 	"Jan ", "Feb ", "Mar ", "Apr ", "May ", "Jun ", "Jul ", "Aug ", "Sep ", "Oct ", "Nov ", "Dec "];
-	
-	
+
+
 	let firstMonth = 	document.getElementById("firstMonth");
 	let secondMonth = 	document.getElementById("secondMonth");
 	let thirdMonth = 	document.getElementById("thirdMonth");
 	let fourthMonth = 	document.getElementById("fourthMonth");
 	let fifthMonth = 	document.getElementById("fifthMonth");
 	let sixthMonth = 	document.getElementById("sixthMonth");
-	
+
 	firstMonth.innerText = (months[monthIndex+1]);
 	secondMonth.innerText = (months[monthIndex+2]);
 	thirdMonth.innerText = (months[monthIndex+3]);
@@ -454,41 +486,3 @@ function monthScribing(){
 	fifthMonth.innerText = (months[monthIndex+5]);
 	sixthMonth.innerText = (months[monthIndex+6]);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

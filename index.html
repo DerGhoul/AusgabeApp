@@ -14,7 +14,7 @@
 
 <div class="containering" >
 <div id="lohnDiv" ><!--Hier wird der Lohn implementiert-->
-	<label>Lohn</label><br>
+	<label>Verfügbar</label><br>
 	<input	type="number"
 					name="lohn"
 					id="lohn"
@@ -232,8 +232,8 @@
 						id="date" >
 		<script> /*<!--Hier wird das heutige Datum vorbelegt-->*/
 				var dateTime = new Date();
-				var day = (dateTime.getDate()+"");
-				var month = dateTime.getMonth()+1;
+				var day = parseInt(dateTime.getDate()+"").toString();
+				var month = parseInt(dateTime.getMonth()+1).toString();
 				if (month.length == 1) {
 					month = ("0"+month);
 				}
@@ -263,9 +263,10 @@
 						id="preis"
 						pattern=""
 						placeholder="00,00"
-						onblur="verrechnen(this.value)">
 	</div>
 
+<!-- NOTE: onblur="verrechnen(this.value)">
+rausgenommen, weil es vorzeitig das Geld abbucht-->
 
 
 
