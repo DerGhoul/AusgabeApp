@@ -220,7 +220,7 @@
 
 
 
-<form action="dbscript.php" class="bookform"  method="post">
+<form name="bookform"  method="post">
 	<div class="bottomcontainer" >
 		<div class="container2"> <!--Hier werden die Dateiparameter erfasst-->
 			<input 	class="item item7"
@@ -279,7 +279,7 @@
 	rausgenommen, weil es vorzeitig das Geld abbucht-->
 	<div class="item_item12">
 	<p class="warning" id="hierfehltwas" ></p><br>
-	<input type="submit" name="" value="">
+	<input type="submit" name="" value="Verbuchen">
 	<!--button onclick="book()" >Verbuchen</button--><br>
 </form>
 
