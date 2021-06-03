@@ -5,6 +5,7 @@
 <title>Ausgabenrechner</title>
 <link type="text/css" rel="stylesheet" href="style.css" />
 <script src="main.js"></script>
+<script src="jquery-3.5.1.min.js"></script>
 </head>
 <body id="body">
 
@@ -30,6 +31,7 @@
 </div>
 <br>
 <!--div class="diva"-->
+
 
 
 
@@ -211,7 +213,6 @@
 	</div>			-->
 </div>
 <br>
-
 
 
 
