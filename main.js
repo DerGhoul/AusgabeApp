@@ -1,4 +1,4 @@
-const  { app, BrowserWindow } = require('electron');
+/*const  { app, BrowserWindow } = require('electron');
 const path = require('path');
 var fs = require('fs');
 
@@ -50,7 +50,7 @@ app.on('activate', () => {
     createWindow();
   }
 });
-
+*/
 
 
 
