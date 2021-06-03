@@ -280,7 +280,7 @@
 	<div class="item_item12">
 	<p class="warning" id="hierfehltwas" ></p><br>
 	<input type="submit" name="" value="">
-	//<button onclick="book()" >Verbuchen</button><br>
+	<!--button onclick="book()" >Verbuchen</button--><br>
 </form>
 
 
