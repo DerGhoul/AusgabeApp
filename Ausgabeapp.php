@@ -21,7 +21,6 @@
 					value="500"
 					onchange="umverteilung()" >
 </div>
-
 <div id="betragDiv" ><!--Hier wird der Übertrag implementiert-->
 	<label>Uebertrag</label><br>
 	<input	type="number"
@@ -29,9 +28,16 @@
 					id="betrag"
 					value="10" >
 </div>
-
 <br>
 <!--div class="diva"-->
+
+
+
+
+
+
+
+
 
 
 
@@ -193,7 +199,7 @@
 		</div>
 
 	</div>
-<!--
+<!--vielleicht mal ein Feature für später
 	<div class="monthcontainer"	>
 		<label	class="monthLabel" 	id="monatsAnzahlLabel" >Anzahl: 1</label>
 		<button class="monthButton" id="firstMonth"  onclick="monthSelecting(this)" >	</button>
@@ -203,81 +209,94 @@
 		<button class="monthButton" id="fifthMonth"  onclick="monthSelecting(this)" >	</button>
 		<button class="monthButton" id="sixthMonth"  onclick="monthSelecting(this)" >	</button>
 	</div>			-->
-
 </div>
-
 <br>
 
 
 
-<div class="bottomcontainer" >
-	<div class="container2"> <!--Hier werden die Dateiparameter erfasst-->
-		<input 	class="item item7"
-						type="text"
-						class="parameter"
-						name="Grund"
-						id="grund"
-						placeholder="Grund"
-						readonly="readonly" >
-		<input 	class="item item8"
-						type="text"
-						class="parameter"
-						name="Beschreibung"
-						id="beschreibung"
-						placeholder="Beschreibung" >
-		<input 	class="item item9"
-						type="date"
-						class="parameter"4
-						name="Datum"
-						id="date" >
-		<script> /*<!--Hier wird das heutige Datum vorbelegt-->*/
-				var dateTime = new Date();
-				var day = parseInt(dateTime.getDate()+"").toString();
-				var month = parseInt(dateTime.getMonth()+1).toString();
-				if (month.length == 1) {
-					month = ("0"+month);
-				}
-
-				if (day.length == 1) {
-					day = ("0"+day);
-				}
-				var year = dateTime.getFullYear();
-				var value = (year+"-"+month+"-"+day);
-				document.getElementById("date").value = value;
-				/*
-				try{
-					umverteilung();
-				}catch(e){
-					console.log(e);
-				}*/
-				try{
-				monthScribing();
-				}catch(e){
-					console.log(e);
-				}
-		</script>
-		<input 	class="item item10"
-						type="number"
-						class="parameter"
-						name="Preis"
-						id="preis"
-						pattern=""
-						placeholder="00,00"
-	</div>
-
-<!-- NOTE: onblur="verrechnen(this.value)">
-rausgenommen, weil es vorzeitig das Geld abbucht-->
 
 
 
 
-<div class="item_item12">
-<p class="warning" id="hierfehltwas" ></p><br>
+
+
+<form class="bookform"  method="post">
+	<div class="bottomcontainer" >
+		<div class="container2"> <!--Hier werden die Dateiparameter erfasst-->
+			<input 	class="item item7"
+							type="text"
+							class="parameter"
+							name="Grund"
+							id="grund"
+							placeholder="Grund"
+							readonly="readonly" >
+			<input 	class="item item8"
+							type="text"
+							class="parameter"
+							name="Beschreibung"
+							id="beschreibung"
+							placeholder="Beschreibung" >
+			<input 	class="item item9"
+							type="date"
+							class="parameter"4
+							name="Datum"
+							id="date" >
+			<script> /*<!--Hier wird das heutige Datum vorbelegt-->*/
+					var dateTime = new Date();
+					var day = parseInt(dateTime.getDate()+"").toString();
+					var month = parseInt(dateTime.getMonth()+1).toString();
+					if (month.length == 1) {
+						month = ("0"+month);
+					}
+
+					if (day.length == 1) {
+						day = ("0"+day);
+					}
+					var year = dateTime.getFullYear();
+					var value = (year+"-"+month+"-"+day);
+					document.getElementById("date").value = value;
+					/*
+					try{
+						umverteilung();
+					}catch(e){
+						console.log(e);
+					}*/
+					try{
+					monthScribing();
+					}catch(e){
+						console.log(e);
+					}
+			</script>
+			<input 	class="item item10"
+							type="number"
+							class="parameter"
+							name="Preis"
+							id="preis"
+							pattern=""
+							placeholder="00,00"
+		</div>
+	<!-- NOTE: onblur="verrechnen(this.value)">
+	rausgenommen, weil es vorzeitig das Geld abbucht-->
+	<div class="item_item12">
+	<p class="warning" id="hierfehltwas" ></p><br>
+	<button onclick="book()" >Verbuchen</button><br>
+</form>
 
 
 
 
-<button onclick="book()" >Verbuchen</button><br>
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 </div>
 </div>
