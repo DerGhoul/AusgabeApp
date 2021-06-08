@@ -1,5 +1,7 @@
 <?php
 
+
+
 echo $_GET["Grund"];
 echo $_GET["Beschreibung"];
 echo $_GET["Datum"];
@@ -21,5 +23,17 @@ if ($conn -> connect_error) {
 
 echo "Connected successfully";
 
+$sql = "SELECT * FROM document";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+  // output data of each row
+  while($row = $result->fetch_assoc()) {
+    echo "id: " . $row["PaymentID"]. " - Reason: " . $row["Reason"]. " - Description " . $row["Description"]. " - Date " . $row["Date"]." - Amount " . $row["Amount"]. "<br>";
+  }
+} else {
+  echo "0 results";
+}
+$conn->close();
 
 ?>
