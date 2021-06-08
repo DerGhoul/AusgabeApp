@@ -1,12 +1,12 @@
 <?php
 
 
-
+/*
 echo $_GET["Grund"];
 echo $_GET["Beschreibung"];
 echo $_GET["Datum"];
 echo $_GET["Preis"];
-
+*/
 
 $servername = "localhost";
 $username = "nas1";
