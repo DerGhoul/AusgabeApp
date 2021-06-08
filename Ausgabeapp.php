@@ -221,7 +221,7 @@
 
 
 
-<form name="bookform"  method="post">
+<form action="dbscript.php" name="bookform"  method="post">
 	<div class="bottomcontainer" >
 		<div class="container2"> <!--Hier werden die Dateiparameter erfasst-->
 			<input 	class="item item7"
