@@ -1,13 +1,15 @@
 <?php
+$servername = "localhost";
+$username = "nas1";
+$password = "nas1";
+$dbname = "TEST";
 
-$grund        = $_POST["Grund"];
-$beschreibung = $_POST["Beschreibung"];
-$datum        = $_POST["Datum"];
-$betrag       = $_POST["Preis"];
-echo $grund;
-echo $beschreibung;
-echo $datum;
-echo $betrag;
+// Create connection
+$conn = new mysqli($servername, $username, $password);
 
-
- ?>
+// Check connection
+if ($conn->connect_error) {
+ die("Connection failed: " . $conn->connect_error);
+}
+echo "Connected successfully";
+?>
