@@ -29,10 +29,10 @@
   xmlhttp.onload = function(){
     document.getElementById("lohn").value = this.responseText;
   };
-  xmlhttp.open("GET"."dboutput.php?q=" + "Hallo", true);
+  xmlhttp.open("GET","dboutput.php?q=" + "Hallo", true);
   xmlhttp.send();
 
-*/
+
 
 </script>
 <div id="betragDiv" ><!--Hier wird der Übertrag implementiert-->

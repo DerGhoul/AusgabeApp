@@ -38,7 +38,7 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 
 // Check connection
 if ($conn -> connect_error) {
- die( "Connection failed: " . $conn->connect_error);
+// die( "Connection failed: " . $conn->connect_error);
 }
 
 //echo "Connected successfully";
@@ -55,7 +55,7 @@ if ($conn->query($insert) === TRUE){
 
 */
 
-
+if($q !== ""){
 $sql = "SELECT Amount FROM document";
 $result = $conn->query($sql);
 //echo $result;
@@ -74,5 +74,6 @@ $conn->close();
 
 //echo "<br> Summe: " . $summe;
 echo $summe;
-
+}
+else{echo 33;}
 ?>
