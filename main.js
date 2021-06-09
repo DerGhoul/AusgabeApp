@@ -69,7 +69,6 @@ app.on('activate', () => {
 
 
 
-
 //Globale Variable für Drag and Drop aktion
 var geldId ="";
 //var monatsAnzahl = 0;
@@ -204,7 +203,7 @@ function book(){
 		document.getElementById("hierfehltwas").innerHTML = "";
 
     verrechnen();//ruft das Programm auf um den Betrag beim richtigen Grund abzuziehen
-    disselect();//wählt Beschreibung und Preis ab
+//    disselect();//wählt Beschreibung und Preis ab
 
 
 

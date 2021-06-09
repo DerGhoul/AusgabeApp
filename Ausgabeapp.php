@@ -5,7 +5,6 @@
 <title>Ausgabenrechner</title>
 <link type="text/css" rel="stylesheet" href="style.css" />
 <script src="main.js"></script>
-<script src="jquery-3.5.1.min.js"></script>
 </head>
 <body id="body">
 
@@ -22,6 +21,20 @@
 					value="500"
 					onchange="umverteilung()" >
 </div>
+<script>
+  //hier wird der derzeitige Stand au der Datenbank abgerufen
+
+  const xmlhttp = new XMLHttpRequest();
+  document.getElementById("lohn").value = 0;
+  xmlhttp.onload = function(){
+    document.getElementById("lohn").value = this.responseText;
+  };
+  xmlhttp.open("GET"."dboutput.php?q=" + "Hallo", true);
+  xmlhttp.send();
+
+*/
+
+</script>
 <div id="betragDiv" ><!--Hier wird der Übertrag implementiert-->
 	<label>Uebertrag</label><br>
 	<input	type="number"
@@ -221,7 +234,7 @@
 
 
 
-<form action="dbscript.php" name="bookform"  method="post">
+<form action="dbscript.php" name="bookform"  method="get">
 	<div class="bottomcontainer" >
 		<div class="container2"> <!--Hier werden die Dateiparameter erfasst-->
 			<input 	class="item item7"
@@ -239,7 +252,7 @@
 							placeholder="Beschreibung" >
 			<input 	class="item item9"
 							type="date"
-							class="parameter"4
+							class="parameter"
 							name="Datum"
 							id="date" >
 			<script> /*<!--Hier wird das heutige Datum vorbelegt-->*/
@@ -280,8 +293,11 @@
 	rausgenommen, weil es vorzeitig das Geld abbucht-->
 	<div class="item_item12">
 	<p class="warning" id="hierfehltwas" ></p><br>
-	<!--input type="submit" oncli name="" value="Verbuchen"-->
-	<button onclick="book()" >Verbuchen</button><br>
+
+	<input type="submit"  value="Verbuchen">
+
+	<!--button onclick="book()" >Verbuchen</button-->
+<br>
 </form>
 
 
