@@ -71,6 +71,8 @@ app.on('activate', () => {
 
 //Globale Variable für Drag and Drop aktion
 var geldId ="";
+monatVorbelegen();
+datenAusDatenBankRufen()
 //var monatsAnzahl = 0;
 
 //Mit dem Start aufgerufene Methoden
@@ -484,4 +486,43 @@ function monthScribing(){
 	fourthMonth.innerText = (months[monthIndex+4]);
 	fifthMonth.innerText = (months[monthIndex+5]);
 	sixthMonth.innerText = (months[monthIndex+6]);
+}
+
+function monatVorbelegen() {
+  /*<!--Hier wird das heutige Datum vorbelegt-->*/
+  var dateTime = new Date();
+  var day = parseInt(dateTime.getDate()+"").toString();
+  var month = parseInt(dateTime.getMonth()+1).toString();
+  if (month.length == 1) {
+    month = ("0"+month);
+  }
+
+  if (day.length == 1) {
+    day = ("0"+day);
+  }
+  var year = dateTime.getFullYear();
+  var value = (year+"-"+month+"-"+day);
+  document.getElementById("date").value = value;
+  /*
+  try{
+    umverteilung();
+  }catch(e){
+    console.log(e);
+  }*/
+  try{
+  monthScribing();
+  }catch(e){
+    console.log(e);
+  }
+}
+
+function datenAusDatenBankRufen() {
+  //hier wird der derzeitige Stand au der Datenbank abgerufen
+  const xmlhttp = new XMLHttpRequest();
+  document.getElementById("lohn").value = 0;
+  xmlhttp.onload = function(){
+    document.getElementById("lohn").value = this.responseText;
+  };
+  xmlhttp.open("GET","dboutput.php?q=" + "Hallo", true);
+  xmlhttp.send();
 }
